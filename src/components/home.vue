@@ -1,18 +1,22 @@
 <template>
   <div class="cards">
-    <div class="fisrt">
-      <pv-card style="width: 40em; height:25em">
+    <router-link to="/Technical">
+      <div class="fisrt">
+        <pv-card style="width: 55em; height:25em">
 
-        <template #title>Technical  </template>
-        <template #subtitle>  </template>
-        <template #content>
-          <p>
-          </p>
-        </template>
+          <template #title> TECHNICAL  </template>
+          <template #subtitle>  </template>
+          <template #content>
+            <p>
+            </p>
+          </template>
 
-      </pv-card>
+        </pv-card>
+      </div>
+    </router-link>
 
-      <pv-card style="width: 40em; height:25em">
+    <div class="second">
+      <pv-card style="width: 55em; height:25em">
 
         <template #title> INBOX </template>
         <template #subtitle>  </template>
@@ -25,10 +29,10 @@
       </pv-card>
     </div>
 
-      <div>
-        <pv-card style="width: 80em; height:25em">
+      <div class="third">
+        <pv-card style="width: 120em; height:30em">
 
-          <template #title> Progress </template>
+          <template #title> PROGRESS </template>
           <template #subtitle>  </template>
           <template #content>
             <p>
@@ -53,9 +57,43 @@
 </script>
 
 <style scoped>
-.fisrt{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+.fisrt {
+  position: absolute;
+
+  left: 540px ;
+
+  top: 200px;
+  margin: 0px;
+  padding: 0px;
+
+  border: 2px solid black;
+
 }
+
+.second {
+  position: absolute;
+
+  left: 1550px ;
+
+  top: 200px;
+  margin: 0px;
+  padding: 0px;
+  border: 2px solid black;
+
+}
+
+.third {
+  position: absolute;
+
+  left: 530px ;
+
+  top: 700px;
+  margin: 0px;
+  padding: 0px;
+  border: 2px solid black;
+
+
+}
+
+
 </style>
