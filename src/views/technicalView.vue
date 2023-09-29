@@ -1,8 +1,5 @@
-<script>
-import technicalComponent from "../components/technical.component.vue";
-export default {
-  name:'technicalView',
-}
+<script setup>
+import technicalComponent from "@/components/technical.component.vue";
 </script>
 
 <template>
