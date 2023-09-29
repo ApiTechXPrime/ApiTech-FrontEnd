@@ -12,6 +12,9 @@ import Toolbar from "primevue/toolbar";
 import Button from "primevue/button";
 import Card from "primevue/card";
 import InputText from "primevue/inputtext";
+import Calendar from "primevue/calendar";
+import Dropdown from "primevue/dropdown";
+import Password from "primevue/password";
 
 createApp(App)
     .use(router)
@@ -22,4 +25,7 @@ createApp(App)
     .component('pv-image', Image)
     .component('pv-card', Card)
     .component('pv-input-text', InputText)
+    .component('pv-calendar', Calendar)
+    .component('pv-password', Password)
+    .component('pv-dropdown', Dropdown)
     .mount('#app')
