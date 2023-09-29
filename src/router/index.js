@@ -4,7 +4,7 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/login',
+      path: '/ApiTechXPrime-FrontEnd',
       name: 'login',
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route

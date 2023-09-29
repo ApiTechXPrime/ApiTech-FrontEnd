@@ -1,14 +1,4 @@
-<script>
-export default{
-  data(){
-    return{
-      items:[
-        {label:"Login", to:"/login"},
-        {label:"Register", to:"/register"},
-      ]
-    }
-  }
-}
+<script setup>
 </script>
 
 <template>
