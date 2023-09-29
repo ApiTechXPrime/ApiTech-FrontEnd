@@ -1,7 +1,7 @@
 <script>
 import {RegisterApiService} from "@/register/services/register-api.service";
 export default {
-  name: "login",
+  name: "register",
   data(){
     return{
       registerService: null,

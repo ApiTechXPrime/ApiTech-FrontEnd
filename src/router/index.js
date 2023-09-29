@@ -33,7 +33,7 @@ const router = createRouter({
               },
               {
                   path:'/Technical',
-                  component:()=>import(/* webpackChunkName: "technical"*/ '../views/Technical.vue')
+                  component:()=>import(/* webpackChunkName: "technical"*/ '../views/technicalView.vue')
               },
               {
                   path:'/Progress',

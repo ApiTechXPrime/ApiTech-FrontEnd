@@ -1,4 +1,4 @@
-import http from "../../technical/http-common";
+import http from "../shared/services/http-common";
 
 export class TechnicalApiService{
     getTechnicals(){
