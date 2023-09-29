@@ -1,10 +1,11 @@
 <script setup>
 
+import Resquest from "@/components/Resquest.vue";
 </script>
 
 <template>
   <div class="Technical">
-    <p>Technical</p>
+    <Resquest/>
   </div>
 </template>
 <style scoped>
