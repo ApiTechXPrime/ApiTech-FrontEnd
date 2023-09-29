@@ -42,6 +42,9 @@ export default{
         }
         this.showErrorUser = this.existUser === false;
       }
+    },
+    goToRegister(){
+      this.$router.push('/register');
     }
   },
   created(){
@@ -85,7 +88,7 @@ export default{
         </div>
         <div class="flex justify-content-center mt-2">
           <label>Don’t have an account?</label>
-          <pv-button class="m-0 p-0" label="Sing Up" link/>
+          <pv-button class="m-0 p-0" label="Sing Up" link @click="goToRegister()"/>
         </div>
       </template>
     </pv-card>
