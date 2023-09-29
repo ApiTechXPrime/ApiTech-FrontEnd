@@ -1,5 +1,5 @@
 <script >
-import Sidebar from '../components/Sidebar.vue'
+import Sidebar from '../components/sidebar.component.vue'
 export default {
   name:'Home',
 
