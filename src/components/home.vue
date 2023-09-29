@@ -1,4 +1,5 @@
 <template>
+
   <div class="cards">
     <router-link to="/Technical">
       <div class="fisrt">
@@ -14,21 +15,23 @@
         </pv-card>
       </div>
     </router-link>
+    <router-link to="/Inbox">
+      <div class="second">
+        <pv-card style="width: 55em; height:25em">
 
-    <div class="second">
-      <pv-card style="width: 55em; height:25em">
+          <template #title> INBOX </template>
+          <template #subtitle>  </template>
+          <template #content>
+            <p>
 
-        <template #title> INBOX </template>
-        <template #subtitle>  </template>
-        <template #content>
-          <p>
+            </p>
+          </template>
 
-          </p>
-        </template>
+        </pv-card>
+      </div>
 
-      </pv-card>
-    </div>
-
+    </router-link>
+    <router-link to="/Progress">
       <div class="third">
         <pv-card style="width: 120em; height:30em">
 
@@ -41,8 +44,7 @@
 
         </pv-card>
       </div>
-
-
+    </router-link>
 
   </div>
 
