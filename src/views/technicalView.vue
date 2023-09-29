@@ -1,9 +1,9 @@
 <script setup>
-import technicalComponent from "@/components/technical.component.vue";
+import technical from "@/components/technical.component.vue";
 </script>
 
 <template>
-  <technicalComponent></technicalComponent>
+  <technical></technical>
 </template>
 <style scoped>
 </style>
