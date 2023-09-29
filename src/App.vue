@@ -1,19 +1,10 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import Login from "@/components/login.component.vue";
 </script>
 
 <template>
-  <header>
-    <div class="wrapper">
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/login">Login</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <login></login>
 </template>
 
 <style scoped>
