@@ -9,7 +9,6 @@ export default{
         clients: [],
         technicals: []
       },
-      user:{},
       email: '',
       password: '',
       showErrorEmail: false,
@@ -63,7 +62,7 @@ export default{
   <pv-toolbar style="background-color: #72B4EF">
     <template #center>
       <pv-image src="https://cdn.discordapp.com/attachments/1150323230058491985/1157150093502333019/68747470733a2f2f6c68342e676f6f676c6575736572636f6e74656e742e636f6d2f356b614c575f54644d724c61772d7847494953554330722d7949754c64717756506e72675771545466645a644c3447596447437865745157352d636872526a372d6b37442d39764b657755646734524747694a73786746396763747247784f674c7850694f50484b71536a48646d637a5f2d44453136662d46497542365f7341486c5a643579712d4e7472536c4e496e72333268767577.png?ex=65178f81&is=65163e01&hm=62d33c739bc6cb6d67cf48604087a8b6878fe8abc0801af25b136be5fba164e8&" alt="Logo de ApiTechXPrime" width="55"/>
-      <div class="title">
+      <div class="m-2">
         TECHXPRIME
       </div>
     </template>
@@ -96,10 +95,6 @@ export default{
 </template>
 
 <style scoped>
-.title{
-  margin: 10px;
-}
-
 .form{
   width: 25em;
   text-align: center;
