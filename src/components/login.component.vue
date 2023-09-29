@@ -51,7 +51,6 @@ export default{
     this.loginService.getUsers()
         .then((response) => {
               this.users = response.users
-          console.log(this.users)
             }
         )
   }
@@ -76,7 +75,7 @@ export default{
           <pv-input-text id="email" v-model="email" aria-describedby="email-error" />
           <small v-if="showErrorEmail">Your email is required</small>
           <label for="password">Password</label>
-          <pv-input-text id="password" v-model="password" aria-describedby="password-error" />
+          <pv-password id="password" v-model="password" aria-describedby="password-error" input-class="w-full" :feedback="false"/>
           <small v-if="showErrorPassword">Your password is required</small>
         </div>
       </template>
