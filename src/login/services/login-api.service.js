@@ -1,7 +1,6 @@
 import http from "@/shared/services/http-common";
 
 export class LoginApiService{
-
     getUsers() {
         return Promise.all([
             http.get('/clients'),

@@ -14,6 +14,7 @@ export default{
       showErrorEmail: false,
       showErrorPassword: false,
       showErrorUser: false,
+      contentVerified: false,
       existUser: false,
       loginService:null,
     };
@@ -22,10 +23,15 @@ export default{
     login(){
       this.verifyContent();
       this.verifyUser();
+      if(this.contentVerified && this.existUser)
+      {
+        this.goToHome()
+      }
     },
     verifyContent(){
       this.showErrorEmail = this.email === '';
       this.showErrorPassword = this.password === '';
+      this.contentVerified = !(this.showErrorEmail || this.showErrorPassword)
     },
     verifyUser(){
       if(this.email !== '' && this.password !== ''){
@@ -44,6 +50,9 @@ export default{
     },
     goToRegister(){
       this.$router.push('/register');
+    },
+    goToHome(){
+      this.$router.push('/home');
     }
   },
   created(){
