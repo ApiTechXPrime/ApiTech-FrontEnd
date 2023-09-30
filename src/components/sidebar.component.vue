@@ -5,14 +5,14 @@
 <template>
 <div class="sidebar">
   <div class="title">
-        Menu
+    Menu
   </div>
   <div class="menu-items">
-      <router-link to="/" active-class="active" exact tag="button" class="side-btn">
-        <div class="link-container">
-          Home
-        </div>
-      </router-link>
+    <router-link to="/home" active-class="active" exact tag="button" class="side-btn">
+      <div class="link-container">
+        Home
+      </div>
+    </router-link>
     <router-link to="/Technical" active-class="active" exact tag="button" class="side-btn">
       <div class="link-container">
         Technical
@@ -31,6 +31,11 @@
     <router-link to="/Inbox" active-class="active" exact tag="button" class="side-btn">
       <div class="link-container">
         Inbox
+      </div>
+    </router-link>
+    <router-link to="/login" active-class="active" exact tag="button" class="side-btn">
+      <div class="link-container">
+        Log Out
       </div>
     </router-link>
   </div>
