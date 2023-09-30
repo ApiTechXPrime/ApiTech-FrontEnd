@@ -1,10 +1,10 @@
 <script>
 import {RegisterApiService} from "@/register/services/register-api.service";
 export default {
-  name: "login",
+  name: "register",
   data(){
     return{
-      registerApiService: null,
+      registerService: null,
       userClient: {},
       userTechnical: {},
       newUser:{},
@@ -47,7 +47,7 @@ export default {
                 "location": "",
                 "aboutHim": ""
               }
-          this.registerApiService.createTechnical(this.newUser)
+          this.registerService.createTechnical(this.newUser)
           this.userCreated = true
         }
         else
@@ -60,7 +60,7 @@ export default {
                 "password": this.password,
                 "birthday": this.birthday
               }
-          this.registerApiService.createClient(this.newUser)
+          this.registerService.createClient(this.newUser)
           this.userCreated = true
         }
       }
@@ -79,8 +79,8 @@ export default {
     },
     verifyExistingEmail(){
       Promise.all([
-        this.registerApiService.getClientByEmail(this.email),
-        this.registerApiService.getTechnicalByEmail(this.email)
+        this.registerService.getClientByEmail(this.email),
+        this.registerService.getTechnicalByEmail(this.email)
       ]).then((responses) => {
         this.userClient = responses[0].data;
         this.userTechnical = responses[1].data;
@@ -100,7 +100,7 @@ export default {
     }
   },
   created(){
-    this.registerApiService = new RegisterApiService()
+    this.registerService = new RegisterApiService()
   }
 }
 </script>

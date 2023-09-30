@@ -15,11 +15,13 @@ import InputText from "primevue/inputtext";
 import Calendar from "primevue/calendar";
 import Dropdown from "primevue/dropdown";
 import Password from "primevue/password";
+import Sidebar from "primevue/sidebar";
 
 createApp(App)
     .use(router)
     .use(PrimeVue, {ripple : true})
     .use(ToastService)
+    .component('pv-sidebar', Sidebar)
     .component('pv-toolbar', Toolbar)
     .component('pv-button', Button)
     .component('pv-image', Image)
