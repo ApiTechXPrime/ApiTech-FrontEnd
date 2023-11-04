@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 
+
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -14,6 +15,12 @@ const router = createRouter({
           name: 'login',
           component: () => import('../components/login.component.vue')
       },
+      {
+          path: "/tasks",
+          name: "tasks",
+          component: () => import('../tasking/pages/task-list.component.vue')
+      },
+
       {
           path: '/home',
           name: 'home',
@@ -46,6 +53,7 @@ const router = createRouter({
           redirect: 'login'
       }
       ]
+
 })
 
 export default router
