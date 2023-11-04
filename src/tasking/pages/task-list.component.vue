@@ -1,5 +1,7 @@
 <script>
 import {TasksApiService} from "@/tasking/services/tasks-api.service";
+import  {FilterMatchMode} from "primevue/api";
+
 export default {
   name:"task-list",
   data(){
@@ -8,6 +10,7 @@ export default {
       task:{},
       selectTasks:null,
       tasksService: null,
+      filters:{},
 
     };
   },
@@ -18,6 +21,14 @@ export default {
           this.tasks =response.data;
           console.log(this.tasks);
         });
+    this.initFilters();
+  },
+  methods:{
+    initFilters(){
+      this.filters = {
+        global: { value: null, matchMode: FilterMatchMode.CONTAINS },
+      };
+    }
   },
 };
 </script>
@@ -53,6 +64,7 @@ export default {
         dataKey="id"
         :paginator="true"
         :rows="10"
+        filters="filters"
         paginatorTemplate="FirstPageLink PrevPageLink PageLinks
 NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
         :rowsPerPageOptions="[5, 10, 25]"
@@ -62,9 +74,16 @@ NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
     >
       <template #header>
         <div class="table-header flex flex-column md:flex-row
-md:justify-content-between">
-          <h5 class="mb-2 md:m-0 p-as-md-center text-xl">
-            Tasks</h5>
+                    md:justify-content-between">
+          <h5 class="mb-2 md:m-0 p-as-md-center text-xl">Manage
+            Tutorials</h5>
+          <span class="p-input-icon-left">
+            <i class="pi pi-search" />
+      <pv-input-text
+            v-model="filters['global'].value"
+          placeholder="Search..."
+      />
+          </span>
         </div>
       </template>
       <pv-column
