@@ -64,7 +64,7 @@ export default {
         dataKey="id"
         :paginator="true"
         :rows="10"
-        filters="filters"
+        :filters="filters"
         paginatorTemplate="FirstPageLink PrevPageLink PageLinks
 NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
         :rowsPerPageOptions="[5, 10, 25]"
@@ -79,10 +79,10 @@ NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
             Tutorials</h5>
           <span class="p-input-icon-left">
             <i class="pi pi-search" />
-      <pv-input-text
+            <pv-input-text
             v-model="filters['global'].value"
-          placeholder="Search..."
-      />
+            placeholder="Search..."
+             />
           </span>
         </div>
       </template>
