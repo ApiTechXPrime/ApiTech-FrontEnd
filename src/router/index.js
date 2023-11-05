@@ -16,12 +16,6 @@ const router = createRouter({
           component: () => import('../components/login.component.vue')
       },
       {
-          path: "/tasks",
-          name: "tasks",
-          component: () => import('../tasking/pages/task-list.component.vue')
-      },
-
-      {
           path: '/home',
           name: 'home',
           component: Home,
@@ -31,23 +25,23 @@ const router = createRouter({
                   component:()=>import(/* webpackChunkName: "overview"*/ '../views/Overview.vue')
               },
               {
-                  path:'/Favorite',
-                  component:()=>import(/* webpackChunkName: "favorite"*/ '../views/Favorite.vue')
-              },
-              {
-                  path:'/Inbox',
-                  component:()=>import(/* webpackChunkName: "inbox"*/ '../views/Inbox.vue')
-              },
-              {
-                  path:'/Technical',
+                  path:'/profile',
                   component:()=>import(/* webpackChunkName: "technical"*/ '../views/technicalView.vue')
               },
               {
-                  path:'/Progress',
-                  component:()=>import(/* webpackChunkName: "progress"*/ '../views/Progress.vue')
+                  path:'/dashboard',
+                  component:()=>import(/* webpackChunkName: "favorite"*/ '../views/Favorite.vue')
               },
               {
-                  path:'/Send/:id',
+                  path:'/inbox',
+                  component:()=>import(/* webpackChunkName: "inbox"*/ '../views/Inbox.vue')
+              },
+              {
+                  path:'/tasks',
+                  component:()=>import(/* webpackChunkName: "progress"*/ '../views/Task.vue')
+              },
+              {
+                  path:'/send/:id',
                   name: 'Send',
                   component:()=>import(/* webpackChunkName: "progress"*/ '../views/Send.vue')
 

@@ -29,7 +29,7 @@
           Profile
         </h3>
       </div>
-      <div class="card" style="height: 470px; width: 90%;">
+      <div class="flex card justify-content-center" style="height: 470px; width: 90%;">
         <pv-card :data="selectedTechnical" v-if="selectedTechnical" style="width: 80%; ">
           <template #content>
             <div class="flex gap-4" >
