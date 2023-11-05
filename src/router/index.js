@@ -38,6 +38,12 @@ const router = createRouter({
               {
                   path:'/Progress',
                   component:()=>import(/* webpackChunkName: "progress"*/ '../views/Progress.vue')
+              },
+              {
+                  path:'/Send/:id',
+                  name: 'Send',
+                  component:()=>import(/* webpackChunkName: "progress"*/ '../views/Send.vue')
+
               }
               ]
       },
