@@ -15,6 +15,13 @@ import InputText from "primevue/inputtext";
 import Calendar from "primevue/calendar";
 import Dropdown from "primevue/dropdown";
 import Password from "primevue/password";
+import Column from "primevue/column";
+import DataTable from "primevue/datatable";
+import Tag from "primevue/tag";
+import Dialog from "primevue/dialog";
+import Textarea from "primevue/textarea";
+import InputNumber from "primevue/inputnumber";
+import ProgressBar from "primevue/progressbar";
 import Sidebar from "primevue/sidebar";
 
 createApp(App)
@@ -30,4 +37,11 @@ createApp(App)
     .component('pv-calendar', Calendar)
     .component('pv-password', Password)
     .component('pv-dropdown', Dropdown)
+    .component('pv-column',Column)
+    .component('pv-data-table',DataTable)
+    .component('pv-tag',Tag)
+    .component('pv-dialog', Dialog)
+    .component('pv-textarea', Textarea)
+    .component('pv-input-number', InputNumber)
+    .component('pv-progressbar',ProgressBar)
     .mount('#app')
