@@ -10,31 +10,37 @@
   <div class="menu-items">
     <router-link to="/home" active-class="active" exact tag="button" class="side-btn">
       <div class="link-container">
+        <i class="pi pi-home"></i>
         Home
       </div>
     </router-link>
-    <router-link to="/Technical" active-class="active" exact tag="button" class="side-btn">
+    <router-link to="/profile" active-class="active" exact tag="button" class="side-btn">
       <div class="link-container">
-        Technical
+        <i class="pi pi-user"></i>
+        Profile
       </div>
     </router-link>
-    <router-link to="/Progress" active-class="active" exact tag="button" class="side-btn">
+    <router-link to="/tasks" active-class="active" exact tag="button" class="side-btn">
       <div class="link-container">
-        Progress
+        <i class="pi pi-calculator"></i>
+        Task
       </div>
     </router-link>
-    <router-link to="/Favorite" active-class="active" exact tag="button" class="side-btn">
+    <router-link to="/dashboard" active-class="active" exact tag="button" class="side-btn">
       <div class="link-container">
-        Favorite
+        <i class="pi pi-table"></i>
+        Dashboard
       </div>
     </router-link>
-    <router-link to="/Inbox" active-class="active" exact tag="button" class="side-btn">
+    <router-link to="/inbox" active-class="active" exact tag="button" class="side-btn">
       <div class="link-container">
-        Inbox
+        <i class="pi pi-envelope"></i>
+        Petition
       </div>
     </router-link>
     <router-link to="/login" active-class="active" exact tag="button" class="side-btn">
       <div class="link-container">
+        <i class="pi pi-sign-out"></i>
         Log Out
       </div>
     </router-link>

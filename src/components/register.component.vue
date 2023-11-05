@@ -1,5 +1,5 @@
 <script>
-import {RegisterApiService} from "@/register/services/register-api.service";
+import {RegisterApiService} from "@/services/register-api.service";
 export default {
   name: "register",
   data(){
