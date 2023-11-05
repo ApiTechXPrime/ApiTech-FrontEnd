@@ -1,5 +1,5 @@
 <script setup>
-import technical from "@/components/technical.component.vue";
+import technical from "@/TechXPrime/components/technical.component.vue";
 </script>
 
 <template>

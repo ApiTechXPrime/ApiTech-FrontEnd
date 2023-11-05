@@ -20,7 +20,6 @@ import DataTable from "primevue/datatable";
 import Tag from "primevue/tag";
 import Dialog from "primevue/dialog";
 import Textarea from "primevue/textarea";
-import InputNumber from "primevue/inputnumber";
 import ProgressBar from "primevue/progressbar";
 import Sidebar from "primevue/sidebar";
 import InputNumber from "primevue/inputnumber";

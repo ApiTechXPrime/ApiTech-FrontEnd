@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
+import Home from '../public/views/Home.vue'
 
 
 const router = createRouter({
@@ -8,12 +8,12 @@ const router = createRouter({
       {
           path: '/register',
           name: 'register',
-          component: () => import('../components/register.component.vue')
+          component: () => import('../TechXPrime/components/register.component.vue')
       },
       {
           path: '/login',
           name: 'login',
-          component: () => import('../components/login.component.vue')
+          component: () => import('../TechXPrime/components/login.component.vue')
       },
       {
           path: '/home',
@@ -22,28 +22,28 @@ const router = createRouter({
           children:[
               {
                   path:'/home',
-                  component:()=>import(/* webpackChunkName: "overview"*/ '../views/Overview.vue')
+                  component:()=>import(/* webpackChunkName: "overview"*/ '../public/views/Overview.vue')
               },
               {
                   path:'/profile',
-                  component:()=>import(/* webpackChunkName: "technical"*/ '../views/technicalView.vue')
+                  component:()=>import(/* webpackChunkName: "technical"*/ '../public/views/technicalView.vue')
               },
               {
                   path:'/dashboard',
-                  component:()=>import(/* webpackChunkName: "favorite"*/ '../views/Favorite.vue')
+                  component:()=>import(/* webpackChunkName: "favorite"*/ '@/TechXPrime/components/dashboard.component.vue')
               },
               {
                   path:'/inbox',
-                  component:()=>import(/* webpackChunkName: "inbox"*/ '../views/Inbox.vue')
+                  component:()=>import(/* webpackChunkName: "inbox"*/ '../public/views/Inbox.vue')
               },
               {
                   path:'/tasks',
-                  component:()=>import(/* webpackChunkName: "progress"*/ '../views/Task.vue')
+                  component:()=>import(/* webpackChunkName: "progress"*/ '../public/views/Task.vue')
               },
               {
                   path:'/send/:id',
                   name: 'Send',
-                  component:()=>import(/* webpackChunkName: "progress"*/ '../views/Send.vue')
+                  component:()=>import(/* webpackChunkName: "progress"*/ '../public/views/Send.vue')
               }
               ]
       },

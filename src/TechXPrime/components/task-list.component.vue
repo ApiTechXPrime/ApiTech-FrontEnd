@@ -1,5 +1,5 @@
 <script>
-import {TasksApiService} from "@/tasking/services/tasks-api.service";
+import {TasksApiService} from "@/TechXPrime/services/tasks-api.service";
 import  {FilterMatchMode} from "primevue/api";
 
 export default {

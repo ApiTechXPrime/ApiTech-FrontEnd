@@ -1,6 +1,6 @@
 <script>
 
-import {AnalyticsApiService} from "@/services/analytics-api.service";
+import {AnalyticsApiService} from "@/TechXPrime/services/analytics-api.service";
 
 class Item{
   component;
