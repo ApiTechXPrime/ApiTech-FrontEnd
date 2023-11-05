@@ -1,5 +1,5 @@
 <script>
-import {TechnicalApiService} from "../technical/technical-api.service";
+import {TechnicalApiService} from "@/services/technical-api.service";
 
 export default{
   name:'technical',

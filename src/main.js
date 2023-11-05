@@ -16,6 +16,8 @@ import Calendar from "primevue/calendar";
 import Dropdown from "primevue/dropdown";
 import Password from "primevue/password";
 import Sidebar from "primevue/sidebar";
+import InputNumber from "primevue/inputnumber";
+import Chart from "primevue/chart";
 
 createApp(App)
     .use(router)
@@ -30,4 +32,6 @@ createApp(App)
     .component('pv-calendar', Calendar)
     .component('pv-password', Password)
     .component('pv-dropdown', Dropdown)
+    .component('pv-input-number', InputNumber)
+    .component('pv-chart', Chart)
     .mount('#app')

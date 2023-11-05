@@ -1,5 +1,5 @@
 <script>
-import {LoginApiService} from "@/login/services/login-api.service";
+import {LoginApiService} from "@/services/login-api.service";
 
 export default{
   name:"login",

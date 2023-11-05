@@ -37,13 +37,13 @@ const router = createRouter({
               },
               {
                   path:'/Progress',
-                  component:()=>import(/* webpackChunkName: "progress"*/ '../views/Progress.vue')
+                  component:()=>import(/* webpackChunkName: "progress"*/ '../components/dashboard.component.vue')
               }
               ]
       },
       {
           path: '/',
-          redirect: 'login'
+          redirect: 'home'
       }
       ]
 })
