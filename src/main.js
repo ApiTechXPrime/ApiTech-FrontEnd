@@ -22,11 +22,13 @@ import Dialog from "primevue/dialog";
 import Textarea from "primevue/textarea";
 import InputNumber from "primevue/inputnumber";
 import ProgressBar from "primevue/progressbar";
+import Sidebar from "primevue/sidebar";
 
 createApp(App)
     .use(router)
     .use(PrimeVue, {ripple : true})
     .use(ToastService)
+    .component('pv-sidebar', Sidebar)
     .component('pv-toolbar', Toolbar)
     .component('pv-button', Button)
     .component('pv-image', Image)
