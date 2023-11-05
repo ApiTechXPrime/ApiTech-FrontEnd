@@ -19,7 +19,9 @@ export default {
       statuses: [
         { label: "Finished", value: "finished" },
         { label: "Unfinished", value: "unfinished" },
-      ]
+      ],
+      deleteTaskDialog: false,
+
     };
   },
   created() {
@@ -36,6 +38,26 @@ export default {
     this.initFilters();
   },
   methods:{
+    confirmDeleteTask(task) {
+      this.task = task;
+      this.deleteTaskDialog = true;
+    },
+    deleteTask() {
+      this.tasksService.delete(this.task.id).then((response) => {
+        this.tasks = this.tasks.filter(
+            (t) => t.id !== this.task.id
+        );
+        this.deleteTaskDialog = false;
+        this.task = {};
+        this.$toast.add({
+          severity: "success",
+          summary: "Successful",
+          detail: "Task Deleted",
+          life: 3000,
+        });
+        console.log(response);
+      });
+    },
     findIndexById(id) {
       console.log(`current id: ${id}`);
       return this.task.findIndex((task) => task.id === id);
@@ -248,7 +270,7 @@ NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
           <pv-button
               icon="pi pi-trash"
               class="p-button-text p-button-rounded"
-              @click=""
+              @click="confirmDeleteTask(slotProps.data)"
           />
         </template>
       </pv-column>
@@ -418,6 +440,34 @@ NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
         />
       </template>
     </pv-dialog>
+    <pv-dialog
+        v-model:visible="deleteTaskDialog"
+        :style="{ width: '450px' }"
+        header="Confirm"
+        :modal="true"
+    >
+      <div class="confirmation-content">
+        <i class="pi pi-exclamation-triangle mr-3" style="font-size:
+2rem" />
+        <span v-if="task">
+Are you sure you want to delete <b>{{ task.client_name }}</b>?
+</span>
+      </div>
+      <template #footer>
+        <pv-button
+            :label="'No'.toUpperCase()"
+            icon="pi pi-times"
+            class="p-button-text"
+            @click="deleteTaskDialog = false"
+        />
+        <pv-button
+            :label="'Yes'.toUpperCase()"
+            icon="pi pi-check"
+            class="p-button-text"
+            @click="deleteTask"
+        />
+      </template>
+    </pv-dialog>
 
   </div>
 
@@ -448,4 +498,11 @@ NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
   justify-content: space-between;
 
 }
+
+.confirmation-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 </style>
