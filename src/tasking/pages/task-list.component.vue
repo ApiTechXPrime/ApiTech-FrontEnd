@@ -36,6 +36,12 @@ export default {
     this.initFilters();
   },
   methods:{
+    findIndexById(id) {
+      console.log(`current id: ${id}`);
+      return this.task.findIndex((task) => task.id === id);
+    },
+
+
     updateProgressBar() {
 
       this.task.value_progress = Math.min(100, Math.max(0, this.task.value_progress));
@@ -80,25 +86,52 @@ export default {
     saveTask() {
       this.submitted = true;
       if (this.task.client_name.trim()) {
-        this.task.id = 0;
-        console.log(this.task);
-        this.tutorial = this.getStorableTask(this.tutorial);
-        this.tasksService
-            .create(this.task)
-            .then((response) => {this.task =
-                this.getDisplayableTask(response.data);
-              this.tasks.push(this.task);
-              this.$toast.add({
-                severity: "success",
-                summary: "Successful",
-                detail: "Tutorial Created",
-                life: 3000,
+        if (this.task.id) {
+          console.log(this.task);
+          this.task = this.getStorableTask(this.task);
+          this.tasksService
+              .update(this.task.id, this.task)
+              .then((response) => {
+                console.log(response.data.id);
+                this.tasks[this.findIndexById(response.data.id)] =
+                    this.getDisplayableTask(response.data);
+                this.$toast.add({
+                  severity: "success",
+                  summary: "Successful",
+                  detail: "Task Updated",
+                  life: 3000,
+                });
+                console.log(response);
               });
-              console.log(response);
-            });
+        } else {
+          this.task.id = 0;
+          console.log(this.task);
+          this.task = this.getStorableTask(this.task);
+          this.tasksService
+              .create(this.task)
+              .then((response) => {
+                this.task =
+                    this.getDisplayableTask(response.data);
+                this.tasks.push(this.task);
+                this.$toast.add({
+                  severity: "success",
+                  summary: "Successful",
+                  detail: "Task Created",
+                  life: 3000,
+                });
+                console.log(response);
+              });
+        }
         this.taskDialog = false;
         this.task = {};
       }
+    },
+
+    editTask(task) {
+      console.log(task);
+      this.task = { ...task };
+      console.log(this.task);
+      this.taskDialog = true;
     },
   },
 };
@@ -140,14 +173,13 @@ export default {
 NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
         :rowsPerPageOptions="[5, 10, 25]"
         currentPageReportTemplate="Showing {first} to {last} of
-{totalRecords} tutorials"
+{totalRecords} tasks"
         responsiveLayout="scroll"
     >
       <template #header>
         <div class="table-header flex flex-column md:flex-row
                     md:justify-content-between">
-          <h5 class="mb-2 md:m-0 p-as-md-center text-xl">Manage
-            Tutorials</h5>
+          <h5 class="mb-2 md:m-0 p-as-md-center text-xl">List Task</h5>
           <span class="p-input-icon-left">
             <i class="pi pi-search" />
             <pv-input-text
@@ -204,9 +236,14 @@ NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
       <pv-column :exportable="false" style="min-width: 8rem">
         <template #body="slotProps">
           <pv-button
-              icon="pi pi-pencil"
+              icon="pi pi-search"
               class="p-button-text p-button-rounded"
               @click=""
+          />
+          <pv-button
+              icon="pi pi-pencil"
+              class="p-button-text p-button-rounded"
+              @click="editTask(slotProps.data)"
           />
           <pv-button
               icon="pi pi-trash"
@@ -349,13 +386,13 @@ NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
         >
           <template #value="slotProps">
             <div v-if="slotProps.value && slotProps.value.value">
-               <span :class="'tutorial-badge status-' +
+               <span :class="'task-badge status-' +
                 slotProps.value.value">
                 {{ slotProps.value.label}}
                  </span>
             </div>
             <div v-else-if="slotProps.value && !slotProps.value.value">
-              <span :class=" 'tutorial-badge status-' +
+              <span :class=" 'task-badge status-' +
               slotProps.value.toLowerCase() ">
               {{ slotProps.value }}
                 </span>
