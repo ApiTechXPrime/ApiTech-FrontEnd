@@ -276,11 +276,6 @@ NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
       <pv-column :exportable="false" style="min-width: 8rem">
         <template #body="slotProps">
           <pv-button
-              icon="pi pi-search"
-              class="p-button-text p-button-rounded"
-              @click=""
-          />
-          <pv-button
               icon="pi pi-pencil"
               class="p-button-text p-button-rounded"
               @click="editTask(slotProps.data)"
@@ -486,7 +481,6 @@ Are you sure you want to delete <b>{{ task.client_name }}</b>?
         />
       </template>
     </pv-dialog>
-
     <pv-dialog
         v-model:visible="deleteTasksDialog"
         :style="{ width: '450px' }"
@@ -511,11 +505,10 @@ Are you sure you want to delete the selected tasks?
             :label="'Yes'.toUpperCase()"
             icon="pi pi-check"
             class="p-button-text"
-            @click="deleteTasksDialog"
+            @click="deleteSelectedTasks"
         />
       </template>
     </pv-dialog>
-
   </div>
 
 
