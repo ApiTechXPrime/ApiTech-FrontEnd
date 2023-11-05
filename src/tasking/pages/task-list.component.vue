@@ -21,6 +21,8 @@ export default {
         { label: "Unfinished", value: "unfinished" },
       ],
       deleteTaskDialog: false,
+      deleteTasksDialog: false,
+
 
     };
   },
@@ -38,6 +40,22 @@ export default {
     this.initFilters();
   },
   methods:{
+    confirmDeleteSelected() {
+      this.deleteTasksDialog = true;
+    },
+    deleteSelectedTasks() {
+      this.selectTasks.forEach((task) => {
+        this.tasksService.delete(task.id)
+            .then((response) => {
+              this.tasks = this.tasks.filter(
+                  (t) => t.id !== task.id
+              );
+              console.log(response);
+            });
+      });
+      this.deleteTasksDialog = false;
+    },
+
     confirmDeleteTask(task) {
       this.task = task;
       this.deleteTaskDialog = true;
@@ -174,8 +192,8 @@ export default {
           label="Delete"
           icon="pi pi-trash"
           class="p-button-danger"
-          @click=""
-          :disabled="true"
+          @click="confirmDeleteSelected"
+          :disabled="!selectTasks || !selectTasks.length"
         />
       </template>
       <template #end>
@@ -465,6 +483,35 @@ Are you sure you want to delete <b>{{ task.client_name }}</b>?
             icon="pi pi-check"
             class="p-button-text"
             @click="deleteTask"
+        />
+      </template>
+    </pv-dialog>
+
+    <pv-dialog
+        v-model:visible="deleteTasksDialog"
+        :style="{ width: '450px' }"
+        header="Confirm"
+        :modal="true"
+    >
+      <div class="confirmation-content">
+        <i class="pi pi-exclamation-triangle mr-3" style="font-size:
+2rem" />
+        <span v-if="task">
+Are you sure you want to delete the selected tasks?
+</span>
+      </div>
+      <template #footer>
+        <pv-button
+            :label="'No'.toUpperCase()"
+            icon="pi pi-times"
+            class="p-button-text"
+            @click="deleteTasksDialog = false"
+        />
+        <pv-button
+            :label="'Yes'.toUpperCase()"
+            icon="pi pi-check"
+            class="p-button-text"
+            @click="deleteTasksDialog"
         />
       </template>
     </pv-dialog>
