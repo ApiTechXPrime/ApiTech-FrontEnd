@@ -20,6 +20,8 @@ import DataTable from "primevue/datatable";
 import Tag from "primevue/tag";
 import Dialog from "primevue/dialog";
 import Textarea from "primevue/textarea";
+import InputNumber from "primevue/inputnumber";
+import ProgressBar from "primevue/progressbar";
 
 createApp(App)
     .use(router)
@@ -38,4 +40,6 @@ createApp(App)
     .component('pv-tag',Tag)
     .component('pv-dialog', Dialog)
     .component('pv-textarea', Textarea)
+    .component('pv-input-number', InputNumber)
+    .component('pv-progressbar',ProgressBar)
     .mount('#app')

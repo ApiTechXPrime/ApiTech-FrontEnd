@@ -4,10 +4,13 @@ import  {FilterMatchMode} from "primevue/api";
 
 export default {
   name:"task-list",
+
   data(){
     return{
       tasks:[],
-      task:{},
+      task:{
+        value_progress: null
+      },
       selectTasks:null,
       tasksService: null,
       filters:{},
@@ -33,6 +36,14 @@ export default {
     this.initFilters();
   },
   methods:{
+    updateProgressBar() {
+
+      this.task.value_progress = Math.min(100, Math.max(0, this.task.value_progress));
+
+
+      this.$refs.progressBar.value = this.task.value_progress;
+    },
+
     getDisplayableTask(task) {
       task.status = task.finished ? this.statuses[0].label :
           this.statuses[1].label;
@@ -53,6 +64,7 @@ export default {
         value_progress: getDisplayableTask.value_progress,
         delivery_day: getDisplayableTask.delivery_day,
         income: getDisplayableTask.income,
+        investment:getDisplayableTask.investment,
         finished: getDisplayableTask.status.label === "Finished",
       };
     },
@@ -228,6 +240,20 @@ NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
             </small>
           </span>
       </div>
+      <div class="field mt-3">
+        <span class="p-float-label">
+          <pv-input-text
+              type="text"
+              id="phone_name"
+              v-model.trim="task.phone_name"
+              required="true"
+              autofocus
+              :class="{'p-invalid':submitted && !task.phone_name}"/>
+          <label for="phone_name">Phone's name</label>
+          <small class="p-error" v-if="submitted && !task.phone_name">Cellphone is required.</small>
+        </span>
+      </div>
+
       <div class="field">
         <span class="p-float-label">
         <pv-textarea
@@ -237,9 +263,82 @@ NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
           rows="2"
           cols="20"
         />
-        <label for="problem">Problem</label>
+        <label for="problem">Phone's Problem</label>
+        <small class="p-error" v-if="submitted && !task.problem">Problem is required.</small>
         </span>
       </div>
+
+      <div class="contenedor-flexbox" >
+        <div class="field">
+        <span class="p-float-label">
+        <pv-input-text
+            type="text"
+            id="components_to_use"
+            v-model.trim="task.components_to_use"
+            required="true"
+            autofocus
+            :class="{'p-invalid':submitted && !task.components_to_use}"/>
+        <label for="components_to_use">Components</label>
+        <small class="p-error" v-if="submitted && !task.components_to_use">Components are required.</small>
+        </span>
+        </div>
+        <div class="field">
+        <span class="p-float-label">
+            <pv-input-number
+                id="money"
+                v-model="task.investment"
+                required="trust"
+                autofocus
+                :class="{'p-invalid': submitted && !task.investment}"
+            />
+        <label for="money">Money Investment</label>
+          <small class="p-error" v-if="submitted && !task.investment">Investment is required.</small>
+        </span>
+        </div>
+        <div class="field">
+          <pv-button
+              icon="pi pi-inbox"
+              class="p-button-text p-button-rounded"
+              @click=""
+          />
+        </div>
+      </div>
+
+      <div  class="field">
+      <span class="p-float-label">
+        <pv-calendar
+            id="delivery_day"
+            v-model="task.delivery_day"
+            requerided="true"
+            autofocus
+            :class="{'p-invalid':submitted && !task.delivery_day}"/>
+          <label for="delivery_day">Delivery Date</label>
+          <small class="p-error" v-if="submitted && !task.delivery_day">
+            Date is required.
+          </small>
+      </span>
+      </div>
+
+      <div>
+        <div class="field">
+          <pv-progressbar  ref="progressBar" :value="task.value_progress"></pv-progressbar>
+        </div>
+      <div class="field">
+        <span class="p-float-label">
+            <pv-input-number
+                id="value_progress"
+                v-model="task.value_progress"
+                required="trust"
+                autofocus
+                :class="{'p-invalid': submitted && !task.value_progress}"
+                @input="updateProgressBar"
+            />
+        <label for="value_progress">Value Progress</label>
+          <small class="p-error" v-if="submitted && !task.value_progress">Value is required.</small>
+        </span>
+      </div>
+      </div>
+
       <div class="field">
         <pv-dropdown
             id="finished"
@@ -307,5 +406,9 @@ NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
     }
   }
 }
+.contenedor-flexbox {
+  display: flex;
+  justify-content: space-between;
 
+}
 </style>
