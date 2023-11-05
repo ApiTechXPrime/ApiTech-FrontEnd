@@ -1,5 +1,5 @@
 <script setup>
-import inbox from "/src/Inbox/pages/inbox.component.vue"
+import inbox from "/src/TechXPrime/components/inbox.component.vue"
 </script>
 
 <template>

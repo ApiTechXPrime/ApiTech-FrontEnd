@@ -1,5 +1,5 @@
 <script setup>
-import send from "/src/Inbox/pages/send.component.vue";
+import send from "/src/TechXPrime/components/send.component.vue";
 </script>
 
 <template>

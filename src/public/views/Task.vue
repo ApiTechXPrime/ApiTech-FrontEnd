@@ -1,5 +1,5 @@
 <script setup>
-import taskListComponent from "@/tasking/pages/task-list.component.vue";
+import taskListComponent from "@/TechXPrime/components/task-list.component.vue";
 </script>
 
 <template>

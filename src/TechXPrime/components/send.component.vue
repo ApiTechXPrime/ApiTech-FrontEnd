@@ -1,5 +1,5 @@
 <script>
-import{InboxApiService} from "@/Inbox/services/inbox-api.service";
+import{InboxApiService} from "@/TechXPrime/services/inbox-api.service";
 
 export default{
   name:'imbox',
