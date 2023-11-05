@@ -120,7 +120,7 @@
 </template>
 
 <script>
-import { TechnicalApiService } from "@/technical/technical-api.service";
+import {TechnicalApiService} from "@/services/technical-api.service";
 import axios from 'axios';
 
 const API_BASE_URL = 'https://my-json-server.typicode.com/ApiTechXPrime/dataApiTech';

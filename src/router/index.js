@@ -44,13 +44,12 @@ const router = createRouter({
                   path:'/send/:id',
                   name: 'Send',
                   component:()=>import(/* webpackChunkName: "progress"*/ '../views/Send.vue')
-
               }
               ]
       },
       {
           path: '/',
-          redirect: 'login'
+          redirect: 'home'
       }
       ]
 
