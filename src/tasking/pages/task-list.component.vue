@@ -11,7 +11,12 @@ export default {
       selectTasks:null,
       tasksService: null,
       filters:{},
-
+      taskDialog:false,
+      submitted:false,
+      statuses: [
+        { label: "Finished", value: "finished" },
+        { label: "Unfinished", value: "unfinished" },
+      ]
     };
   },
   created() {
@@ -20,15 +25,69 @@ export default {
         .then((response)=>{
           this.tasks =response.data;
           console.log(this.tasks);
+          this.tasks.forEach(
+              (task) => this.getDisplayableTask(task)
+          );
+          console.log(this.tasks);
         });
     this.initFilters();
   },
   methods:{
+    getDisplayableTask(task) {
+      task.status = task.finished ? this.statuses[0].label :
+          this.statuses[1].label;
+      return task;
+    },
     initFilters(){
       this.filters = {
         global: { value: null, matchMode: FilterMatchMode.CONTAINS },
       };
-    }
+    },
+    getStorableTask(getDisplayableTask) {
+      return {
+        id: getDisplayableTask.id,
+        client_name: getDisplayableTask.client_name,
+        phone_name: getDisplayableTask.phone_name,
+        problem: getDisplayableTask.problem,
+        components_to_use: getDisplayableTask.components_to_use,
+        value_progress: getDisplayableTask.value_progress,
+        delivery_day: getDisplayableTask.delivery_day,
+        income: getDisplayableTask.income,
+        finished: getDisplayableTask.status.label === "Finished",
+      };
+    },
+    openNew() {
+      this.task = {};
+      this.submitted = false;
+      this.taskDialog = true;
+    },
+    hideDialog() {
+      this.taskDialog = false;
+      this.submitted = false;
+    },
+    saveTask() {
+      this.submitted = true;
+      if (this.task.client_name.trim()) {
+        this.task.id = 0;
+        console.log(this.task);
+        this.tutorial = this.getStorableTask(this.tutorial);
+        this.tasksService
+            .create(this.task)
+            .then((response) => {this.task =
+                this.getDisplayableTask(response.data);
+              this.tasks.push(this.task);
+              this.$toast.add({
+                severity: "success",
+                summary: "Successful",
+                detail: "Tutorial Created",
+                life: 3000,
+              });
+              console.log(response);
+            });
+        this.taskDialog = false;
+        this.task = {};
+      }
+    },
   },
 };
 </script>
@@ -42,7 +101,7 @@ export default {
           label="New"
           icon="pi pi-plus"
           class="p-button-success mr-2"
-          @click=""
+          @click="openNew"
         />
         <pv-button
           label="Delete"
@@ -115,6 +174,21 @@ NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
           :sortable="true"
           style="min-width: 12rem"
       ></pv-column>
+        <pv-column
+        field="status"
+        header="Status"
+        :sortable="true"
+        style="min-width: 12rem"
+        >
+        <template #body="slotProps">
+          <pv-tag v-if="slotProps.data.status === 'Finished'"
+                  severity="success">
+            {{ slotProps.data.status }}
+          </pv-tag>
+          <pv-tag v-else severity="info">{{ slotProps.data.status
+            }}</pv-tag>
+        </template>
+        </pv-column>
       <pv-column :exportable="false" style="min-width: 8rem">
         <template #body="slotProps">
           <pv-button
@@ -131,6 +205,84 @@ NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
       </pv-column>
     </pv-data-table>
       </div>
+    <pv-dialog
+        v-model:visible="taskDialog"
+        :style="{ width: '450px' }"
+        header="Task Information"
+        :modal="true"
+        class="p-fluid"
+    >
+      <div class="field mt-3">
+          <span class="p-float-label">
+            <pv-input-text
+               type="text"
+               id="client_name"
+               v-model.trim="task.client_name"
+              required="true"
+              autofocus
+              :class="{ 'p-invalid': submitted && !task.client_name }"
+            />
+            <label for="client_name">Client Name</label>
+            <small class="p-error" v-if="submitted && !task.client_name">
+            Client Name is required.
+            </small>
+          </span>
+      </div>
+      <div class="field">
+        <span class="p-float-label">
+        <pv-textarea
+           id="problem"
+           v-model="task.problem"
+           required="false"
+          rows="2"
+          cols="20"
+        />
+        <label for="problem">Problem</label>
+        </span>
+      </div>
+      <div class="field">
+        <pv-dropdown
+            id="finished"
+            v-model="task.status"
+            :options="statuses"
+            optionLabel="label"
+            placeholder="Select a Status"
+        >
+          <template #value="slotProps">
+            <div v-if="slotProps.value && slotProps.value.value">
+               <span :class="'tutorial-badge status-' +
+                slotProps.value.value">
+                {{ slotProps.value.label}}
+                 </span>
+            </div>
+            <div v-else-if="slotProps.value && !slotProps.value.value">
+              <span :class=" 'tutorial-badge status-' +
+              slotProps.value.toLowerCase() ">
+              {{ slotProps.value }}
+                </span>
+            </div>
+            <span v-else>
+              {{ slotProps.placeholder }}
+            </span>
+          </template>
+        </pv-dropdown>
+      </div>
+      <template #footer>
+        <pv-button
+            :label="'Cancel'.toUpperCase()"
+            icon="pi pi-times"
+            class="p-button-text"
+            @click="hideDialog"
+        />
+        <pv-button
+            :label="'Save'.toUpperCase()"
+            icon="pi pi-check"
+            class="p-button-text"
+            @click="saveTask"
+        />
+      </template>
+    </pv-dialog>
+
   </div>
 
 

@@ -18,6 +18,8 @@ import Password from "primevue/password";
 import Column from "primevue/column";
 import DataTable from "primevue/datatable";
 import Tag from "primevue/tag";
+import Dialog from "primevue/dialog";
+import Textarea from "primevue/textarea";
 
 createApp(App)
     .use(router)
@@ -34,4 +36,6 @@ createApp(App)
     .component('pv-column',Column)
     .component('pv-data-table',DataTable)
     .component('pv-tag',Tag)
+    .component('pv-dialog', Dialog)
+    .component('pv-textarea', Textarea)
     .mount('#app')
