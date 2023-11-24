@@ -175,10 +175,20 @@
       "phone_name": "Motorola G10",
       "problem": "dasdas",
       "components_to_use": "dsdas",
-      "value_progress": 5,
+      "value_progress": 50,
       "delivery_day": "2023-11-25T05:00:00.000Z",
       "investment": 15,
       "finished": false
+    },
+    {
+      "id": 7,
+      "client_name": "cxz",
+      "phone_name": "czxczx",
+      "problem": "czx",
+      "components_to_use": "Bateria",
+      "value_progress": 100,
+      "delivery_day": "2023-11-25T05:00:00.000Z",
+      "finished": true
     }
   ],
   "analytics": [

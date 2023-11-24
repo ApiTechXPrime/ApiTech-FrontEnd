@@ -5,6 +5,7 @@ import  {FilterMatchMode} from "primevue/api";
 export default {
   name:"task-list",
 
+
   data(){
     return{
       tasks:[],
@@ -155,21 +156,15 @@ NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
               }}</pv-tag>
           </template>
         </pv-column>
-
-        <pv-column
-            field="status"
-            header="Status"
-            :sortable="true"
-            style="min-width: 12rem"
-        >
-          <template #body="slotProps">
-            <pv-tag v-if="slotProps.data.status === 'Finished'"
-                    severity="success">
-              {{ slotProps.data.status }}
-            </pv-tag>
-            <pv-tag v-else severity="info">{{ slotProps.data.status
-              }}</pv-tag>
-          </template>
+        <pv-column field="value_progress"
+                   header="Progress"
+                   :sortable="true"
+                   style="min-width: 12rem">
+          <div v-for="task in tasks" :key="task.id">
+            <div class="field">
+              <pv-progressbar :value="task.value_progress"></pv-progressbar>
+            </div>
+          </div>
         </pv-column>
 
       </pv-data-table>
@@ -196,16 +191,6 @@ NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
     }
   }
 }
-.contenedor-flexbox {
-  display: flex;
-  justify-content: space-between;
 
-}
-
-.confirmation-content {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
 </style>
