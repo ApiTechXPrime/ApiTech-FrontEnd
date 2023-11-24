@@ -134,23 +134,34 @@ export default {
               .update(this.task.id, this.task)
               .then((response) => {
                 console.log(response.data.id);
-                const updatedTask = this.getDisplayableTask(response.data);
-                const index = this.findIndexById(response.data.id);
-                this.tasks.splice(index, 1, updatedTask); // Actualizar tarea en el arreglo
+                this.tasks[this.findIndexById(response.data.id)] =
+                    this.getDisplayableTask(response.data);
                 this.$toast.add({
                   severity: "success",
                   summary: "Successful",
                   detail: "Task Updated",
-                  life: 1,
+                  life: 3000,
                 });
                 console.log(response);
-              })
-              .catch((error) => {
-                console.error("Error updating task:", error);
-                // Manejo de errores
               });
         } else {
-          // Resto del código para crear una tarea...
+          this.task.id = 0;
+          console.log(this.task);
+          this.task = this.getStorableTask(this.task);
+          this.tasksService
+              .create(this.task)
+              .then((response) => {
+                this.task =
+                    this.getDisplayableTask(response.data);
+                this.tasks.push(this.task);
+                this.$toast.add({
+                  severity: "success",
+                  summary: "Successful",
+                  detail: "Task Created",
+                  life: 3000,
+                });
+                console.log(response);
+              });
         }
         this.taskDialog = false;
         this.task = {};

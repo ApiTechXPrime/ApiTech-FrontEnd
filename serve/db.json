@@ -168,6 +168,17 @@
       "delivery_day": "2023-11-01T05:00:00.000Z",
       "investment": 15,
       "finished": false
+    },
+    {
+      "id": 6,
+      "client_name": "Franco",
+      "phone_name": "Motorola G10",
+      "problem": "dasdas",
+      "components_to_use": "dsdas",
+      "value_progress": 5,
+      "delivery_day": "2023-11-25T05:00:00.000Z",
+      "investment": 15,
+      "finished": false
     }
   ],
   "analytics": [
