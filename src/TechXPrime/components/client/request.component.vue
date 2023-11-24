@@ -99,9 +99,9 @@ export default {
              "problem": this.problem,
              "specification": this.specification
           };
-        console.log("ah b c")
+
         if (this.requestService) {
-          console.log("ah b c")
+
           this.requestService.createRequest(this.newResquest)
               .then(() => {
                 this.requestCreated = true;

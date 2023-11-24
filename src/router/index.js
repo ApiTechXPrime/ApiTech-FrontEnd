@@ -91,6 +91,7 @@ const router = createRouter({
                   components:{
                       inside:()=>import(/* webpackChunkName: "progress"*/ '@/public/views/Send.vue')}
               }
+
           ]
       },
       {
@@ -101,6 +102,17 @@ const router = createRouter({
           path:'/requests',
           name:'requests',
           component:()=>import('../public/views/Request.vue')
+      },
+      {
+          path:'/technician',
+          name:'technicians',
+          component:()=>import('../public/views/List-Tecnical.vue')
+      },
+      {
+          path:'/technician/:id',
+          name: 'technician',
+          components:{
+              inside:()=>import(/* webpackChunkName: "progress"*/ '@/TechXPrime/components/technicals/technical.component.vue')}
       }
       ]
 

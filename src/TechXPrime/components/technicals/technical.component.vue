@@ -125,7 +125,7 @@
 import {TechnicalApiService} from "@/TechXPrime/services/technical-api.service";
 import axios from 'axios';
 
-const API_BASE_URL = 'https://my-json-server.typicode.com/ApiTechXPrime/dataApiTech';
+const API_BASE_URL = 'http://localhost:3000';
 export default {
   name: 'technical',
   data() {
