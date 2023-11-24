@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../public/views/Home.vue'
+import SidebarTechnical from "@/TechXPrime/components/technicals/sidebar-technical.component.vue";
+import SidebarClient from "@/TechXPrime/components/client/sidebar-client.component.vue";
 
 
 const router = createRouter({
@@ -8,46 +9,90 @@ const router = createRouter({
       {
           path: '/register',
           name: 'register',
-          component: () => import('../TechXPrime/components/register.component.vue')
+          component: () => import('@/TechXPrime/components/register.component.vue')
       },
       {
           path: '/login',
           name: 'login',
-          component: () => import('../TechXPrime/components/login.component.vue')
+          components: {
+              default: () => import('@/TechXPrime/components/login.component.vue')}
       },
       {
-          path: '/home',
-          name: 'home',
-          component: Home,
+          path: '/sideBarTechnical',
+          name: 'homeTechnical',
+          component: SidebarTechnical,
           children:[
               {
-                  path:'/home',
-                  component:()=>import(/* webpackChunkName: "overview"*/ '../TechXPrime/components/home.component.vue')
+                  path:'homeTechnical',
+                  components:{
+                      inside:()=>import(/* webpackChunkName: "overview"*/ '@/TechXPrime/components/technicals/home-technical.component.vue')}
               },
               {
-                  path:'/profile',
-                  component:()=>import(/* webpackChunkName: "technical"*/ '../public/views/technicalView.vue')
+                  path:'profile',
+                  components:{
+                      inside: ()=>import(/* webpackChunkName: "technical"*/ '@/TechXPrime/components/technicals/technical.component.vue')}
               },
               {
-                  path:'/dashboard',
-                  component:()=>import(/* webpackChunkName: "favorite"*/ '@/TechXPrime/components/technicals/dashboard.component.vue')
+                  path:'dashboard',
+                  components:{
+                      inside: ()=>import(/* webpackChunkName: "favorite"*/ '@/TechXPrime/components/technicals/dashboard.component.vue')}
               },
               {
-                  path:'/inbox',
-                  component:()=>import(/* webpackChunkName: "inbox"*/ '../public/views/Inbox.vue')
+                  path:'inbox',
+                  components:{
+                      inside: ()=>import(/* webpackChunkName: "inbox"*/ '@/public/views/Inbox.vue')}
               },
               {
-                  path:'/tasks',
-                  component:()=>import(/* webpackChunkName: "progress"*/ '../public/views/Task.vue')
+                  path:'tasks',
+                  components:{
+                      inside:()=>import(/* webpackChunkName: "progress"*/ '@/TechXPrime/components/technicals/task-list.component.vue')}
               },
               {
-                  path:'/send/:id',
+                  path:'send/:id',
                   name: 'Send',
-                  component:()=>import(/* webpackChunkName: "progress"*/ '../public/views/Send.vue')
+                  components:{
+                      inside:()=>import(/* webpackChunkName: "progress"*/ '@/public/views/Send.vue')}
               }
-              ]
+         ]
       },
-
+      {
+          path: '/sideBarClient',
+          name: 'homeClient',
+          component: SidebarClient,
+          children:[
+              {
+                  path:'homeClient',
+                  components:{
+                      inside:()=>import(/* webpackChunkName: "overview"*/ '@/TechXPrime/components/client/home-client.component.vue')}
+              },
+              {
+                  path:'technical',
+                  components:{
+                      inside: ()=>import(/* webpackChunkName: "technical"*/ '@/TechXPrime/components/technicals/technical.component.vue')}
+              },
+              {
+                  path:'progress',
+                  components:{
+                      inside: ()=>import(/* webpackChunkName: "favorite"*/ '@/TechXPrime/components/technicals/dashboard.component.vue')}
+              },
+              {
+                  path:'favorite',
+                  components:{
+                      inside: ()=>import(/* webpackChunkName: "inbox"*/ '@/public/views/Inbox.vue')}
+              },
+              {
+                  path:'inbox',
+                  components:{
+                      inside:()=>import(/* webpackChunkName: "progress"*/ '@/TechXPrime/components/technicals/task-list.component.vue')}
+              },
+              {
+                  path:'send/:id',
+                  name: 'Send',
+                  components:{
+                      inside:()=>import(/* webpackChunkName: "progress"*/ '@/public/views/Send.vue')}
+              }
+          ]
+      },
       {
           path: '/',
           redirect: 'login'

@@ -67,52 +67,54 @@
           v-model="searchQuery"
       />
       <button id="bt2" @click="searchLocation" style="background-color: greenyellow;">Search</button>
-      <div id="map" style="width: 55%; height: 430px;"></div>
-    </div>
-    <div >
-      <h2 class="tex-3" style="margin-top:-31%;margin-left: 60%">REVIEWS</h2>
-      <div class="btn-center" style="margin-left: 30%;margin-top: -20%;">
-        <button id="bt1" @click="editProfile" style="background-color: #007bff; width: 30%; height: 10%; font-size: 27px; cursor: pointer; border: 5px solid deepskyblue; border-radius: 10px; font-weight: bold;">Edit Profile</button>
-        <br><br><br>
-        <button id="bt1" style="background-color: #007bff; width: 30%; height: 10%; font-size: 27px; cursor: pointer; border: 5px solid deepskyblue; border-radius: 10px; font-weight: bold;">Nothing Here yet</button>
-      </div>
-      <!-- edición del perfil -->
-      <div v-if="isEditing" class="modal">
-        <div class="modal-content" style="background-color:deepskyblue; border: 6px solid darkgrey; border-radius: 12px;">
-          <div style="color: black;"><h2> <strong>Edit Profile</strong></h2></div>
-          <form @submit.prevent="saveChanges">
-            <div class="form-group" style="color: black; font-size: 18px;">
-              <label for="name">Name:</label>
-              <input style="padding: 5px; border: 2px solid darkgrey; font-size: 17px;" type="text" id="name" v-model="editedTechnical.fullName" />
+      <div class="flex">
+        <div id="map" style="width: 55%; height: 400px; margin-bottom:10px"></div>
+        <div>
+          <h2 class="tex-3">REVIEWS</h2>
+          <div class="flex flex-column align-items-center" style="width:500px">
+            <button id="bt1" @click="editProfile" style="background-color: #007bff; width: 60%; height: 10%; font-size: 27px; cursor: pointer; border: 5px solid deepskyblue; border-radius: 10px; font-weight: bold;">Edit Profile</button>
+            <br><br><br>
+            <button id="bt1" style="background-color: #007bff; width: 60%; height: 10%; font-size: 27px; cursor: pointer; border: 5px solid deepskyblue; border-radius: 10px; font-weight: bold;">Nothing Here yet</button>
+          </div>
+          <!-- edición del perfil -->
+          <div v-if="isEditing" class="modal">
+            <div class="modal-content" style="background-color:deepskyblue; border: 6px solid darkgrey; border-radius: 12px;">
+              <div style="color: black;"><h2> <strong>Edit Profile</strong></h2></div>
+              <form @submit.prevent="saveChanges">
+                <div class="form-group" style="color: black; font-size: 18px;">
+                  <label for="name">Name:</label>
+                  <input style="padding: 5px; border: 2px solid darkgrey; font-size: 17px;" type="text" id="name" v-model="editedTechnical.fullName" />
+                </div>
+                <div class="form-group" style="color: black; font-size: 17px;">
+                  <label for="consultationPrice">Consultation Price:</label>
+                  <input style="padding: 5px;font-size: 17px; border: 2px solid darkgrey;" type="number" id="consultationPrice" v-model="editedTechnical.consultationPrice" />
+                </div>
+                <div class="form-group" style="color: black; font-size: 17px;">
+                  <label for="experience">Experience:</label>
+                  <select style="padding: 5px; font-size: 17px; border: 2px solid darkgrey;" id="experience" v-model="editedTechnical.experience">
+                    <option value="1-6 months">1-6 months</option>
+                    <option value="1-2 years">1-2 years</option>
+                    <option value="2 years">2 years</option>
+                  </select>
+                </div>
+                <div class="form-group" style="color: black; font-size: 17px;">
+                  <label for="location">Location:</label>
+                  <input style="padding: 5px;font-size: 17px; border: 2px solid darkgrey;" type="text" id="location" v-model="editedTechnical.location" />
+                </div>
+                <div class="form-group" style="color: black; font-size: 17px;">
+                  <label for="aboutYou">About you:</label>
+                  <input style="padding: 5px; font-size: 17px; border: 2px solid darkgrey;" type="text" id="aboutYou" v-model="editedTechnical.aboutHim" />
+                </div>
+                <div class="form-group" style="color: black; font-size: 17px;">
+                  <label for="image">Change Photo:</label>
+                  <input style="padding: 5px; font-size: 17px; border: 2px solid darkgrey;" type="file" id="image" @change="changePhoto" accept="image/*" />
+                  <img v-if="editedTechnical.image" :src="editedTechnical.image" alt="Imagen seleccionada" style="max-width: 200px; max-height: 200px;" />
+                </div>
+                <button style="margin-left: 29%; font-weight: bold; font-size: 16px; background-color: green" type="submit">Save Changes</button>
+              </form>
+              <button style="font-weight: bold; font-size: 16px;" id="cancel" @click="cancelEditing">Cancel</button>
             </div>
-            <div class="form-group" style="color: black; font-size: 17px;">
-              <label for="consultationPrice">Consultation Price:</label>
-              <input style="padding: 5px;font-size: 17px; border: 2px solid darkgrey;" type="number" id="consultationPrice" v-model="editedTechnical.consultationPrice" />
-            </div>
-            <div class="form-group" style="color: black; font-size: 17px;">
-              <label for="experience">Experience:</label>
-              <select style="padding: 5px; font-size: 17px; border: 2px solid darkgrey;" id="experience" v-model="editedTechnical.experience">
-                <option value="1-6 months">1-6 months</option>
-                <option value="1-2 years">1-2 years</option>
-                <option value="2 years">2 years</option>
-              </select>
-            </div>
-            <div class="form-group" style="color: black; font-size: 17px;">
-              <label for="location">Location:</label>
-              <input style="padding: 5px;font-size: 17px; border: 2px solid darkgrey;" type="text" id="location" v-model="editedTechnical.location" />
-            </div>
-            <div class="form-group" style="color: black; font-size: 17px;">
-              <label for="aboutYou">About you:</label>
-              <input style="padding: 5px; font-size: 17px; border: 2px solid darkgrey;" type="text" id="aboutYou" v-model="editedTechnical.aboutHim" />
-            </div>
-            <div class="form-group" style="color: black; font-size: 17px;">
-              <label for="image">Change Photo:</label>
-              <input style="padding: 5px; font-size: 17px; border: 2px solid darkgrey;" type="file" id="image" @change="changePhoto" accept="image/*" />
-              <img v-if="editedTechnical.image" :src="editedTechnical.image" alt="Imagen seleccionada" style="max-width: 200px; max-height: 200px;" />
-            </div>
-            <button style="margin-left: 29%; font-weight: bold; font-size: 16px; background-color: green" type="submit">Save Changes</button>
-          </form>
-          <button style="font-weight: bold; font-size: 16px;" id="cancel" @click="cancelEditing">Cancel</button>
+          </div>
         </div>
       </div>
     </div>
@@ -162,8 +164,7 @@ export default {
     changePhoto(event) {
       const selectedFile = event.target.files[0];
       if (selectedFile && selectedFile.type.startsWith('image/')) {
-        const imageUrl = URL.createObjectURL(selectedFile);
-        this.editedTechnical.image = imageUrl;
+        this.editedTechnical.image = URL.createObjectURL(selectedFile);
       }
     },
 
@@ -237,7 +238,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .prof-fa-use {
   color: black;
   font-weight: bold;
@@ -256,7 +257,7 @@ export default {
 .card {
   background-color: #007bff;
   margin-top: 0.6%;
-  width: 140%;
+  width: 50%;
   margin-left: 5%;
 }
 #prof-2{
@@ -280,8 +281,6 @@ export default {
   border-radius: 5px;
 }
 .tex-3{
-  margin-left: 48%;
-  margin-top: -40%;
   color: black;
   display: flex;
   flex-direction: column;
@@ -309,7 +308,6 @@ export default {
 }
 
 .btn-center {
-  width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -318,7 +316,6 @@ export default {
   margin-left: 25%;
   margin-top: -20%;
 }
-//_::::::::::::::
 #bt1{
   background-color: #007bff;
   color: black;
@@ -358,6 +355,8 @@ export default {
 }
 
 form {
+  height: 300px;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
 }

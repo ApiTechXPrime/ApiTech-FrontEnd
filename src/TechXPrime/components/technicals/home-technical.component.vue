@@ -1,6 +1,6 @@
 <template>
     <div class="flex justify-content-around mt-6">
-      <router-link to="/profile">
+      <router-link to="/sideBarTechnical/profile">
         <pv-card class="w-25rem h-15rem">
           <template #title>PROFILE</template>
           <template #content>
@@ -8,7 +8,7 @@
           </template>
         </pv-card>
       </router-link>
-      <router-link to="/inbox">
+      <router-link to="/sideBarTechnical/inbox">
         <pv-card class="w-25rem h-15rem">
           <template #title> INBOX </template>
           <template #content>
@@ -18,7 +18,7 @@
       </router-link>
     </div>
     <div class="flex justify-content-evenly align-items-end" style="height: 50%;">
-      <router-link style="width: 60%" to="/dashboard">
+      <router-link style="width: 60%" to="/sideBarTechnical/dashboard">
         <pv-card class="h-15rem">
           <template #title>DASHBOARD</template>
           <template #content>
@@ -30,7 +30,9 @@
 </template>
 
 <script>
+export default{
+}
 </script>
 
-<style scoped>
+<style>
 </style>

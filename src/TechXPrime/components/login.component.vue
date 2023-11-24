@@ -18,6 +18,7 @@ export default{
       existUser: false,
       loginService:null,
       selectedUser: {},
+      typeOfUser: '',
     };
   },
   methods:{
@@ -26,7 +27,12 @@ export default{
       this.verifyUser();
       if(this.contentVerified && this.existUser)
       {
-        this.goToHome()
+        if(this.typeOfUser === "Tecnico"){
+          this.goToHomeTechnical()
+        }
+        else if(this.typeOfUser === "Cliente"){
+          this.gotToHomeClient()
+        }
       }
     },
     verifyContent(){
@@ -39,17 +45,15 @@ export default{
         for (let client of this.users.clients){
           if(client.email === this.email && client.password === this.password){
             this.existUser = true;
-          }
-          if(this.existUser){
-            this.selectedUser= client;
+            this.typeOfUser = "Cliente";
+            this.selectedUser=client;
           }
         }
         for (let technical of this.users.technicals){
           if(technical.email === this.email && technical.password === this.password){
             this.existUser = true;
-          }
-          if(this.existUser){
-            this.selectedUser= technical;
+            this.typeOfUser = "Tecnico";
+            this.selectedUser = technical;
           }
         }
         this.showErrorUser = this.existUser === false;
@@ -58,8 +62,11 @@ export default{
     goToRegister(){
       this.$router.push('/register');
     },
-    goToHome(){
-      this.$router.push('/home');
+    goToHomeTechnical(){
+      this.$router.push('/sideBarTechnical/homeTechnical');
+    },
+    gotToHomeClient() {
+      this.$router.push('/sideBarClient/homeClient');
     }
   },
   created(){
