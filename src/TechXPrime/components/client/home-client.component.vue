@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-content-around mt-6">
-    <router-link to="/sideBarClient/profile">
+    <router-link to="/sideBarClient/technicalView">
       <pv-card class="w-25rem h-15rem">
         <template #title>TECHNICAL</template>
         <template #content>
@@ -8,8 +8,8 @@
         </template>
       </pv-card>
     </router-link>
-    <router-link to="sideBarClient/inbox">
-      <pv-card class="w-25rem h-15rem">
+    <router-link to="">
+      <pv-card class="w-25rem h-15rem bg-black-alpha-10" style="cursor: default">
         <template #title> INBOX </template>
         <template #content>
           <i class="pi pi-envelope text-8xl"></i>
@@ -18,11 +18,11 @@
     </router-link>
   </div>
   <div class="flex justify-content-evenly align-items-end" style="height: 50%;">
-    <router-link style="width: 60%" to="/sideBarClient/dashboard">
+    <router-link style="width: 60%" to="/sideBarClient/progress">
       <pv-card class="h-15rem">
         <template #title>PROGRESS</template>
         <template #content>
-          <i class="pi pi-table text-8xl"></i>
+          <i class="pi pi-clock text-8xl"></i>
         </template>
       </pv-card>
     </router-link>

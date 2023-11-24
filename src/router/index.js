@@ -66,30 +66,19 @@ const router = createRouter({
                       inside:()=>import(/* webpackChunkName: "overview"*/ '@/TechXPrime/components/client/home-client.component.vue')}
               },
               {
-                  path:'technical',
-                  components:{
-                      inside: ()=>import(/* webpackChunkName: "technical"*/ '@/TechXPrime/components/technicals/technical.component.vue')}
-              },
-              {
                   path:'progress',
                   components:{
                       inside: ()=>import(/* webpackChunkName: "favorite"*/ '@/TechXPrime/components/client/view-order.component.vue')}
               },
               {
-                  path:'favorite',
-                  components:{
-                      inside: ()=>import(/* webpackChunkName: "inbox"*/ '@/public/views/Inbox.vue')}
-              },
-              {
-                  path:'inbox',
-                  components:{
-                      inside:()=>import(/* webpackChunkName: "progress"*/ '@/TechXPrime/components/technicals/task-list.component.vue')}
-              },
-              {
                   path:'technicalView',
-                  name: 'technicalView',
                   components:{
                       inside:()=>import('@/TechXPrime/components/client/view-technical.component.vue')}
+              },
+              {
+                  path:'requests/:technicalId',
+                  components:{
+                      inside:()=>import('@/TechXPrime/components/client/request.component.vue')}
               },
           ]
       },
@@ -97,11 +86,7 @@ const router = createRouter({
           path: '/',
           redirect: 'login'
       },
-      {
-          path:'/requests',
-          name:'requests',
-          component:()=>import('../public/views/Request.vue')
-      },
+
       {
           path:'/technician',
           name:'technicians',

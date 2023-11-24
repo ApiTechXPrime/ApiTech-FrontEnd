@@ -16,7 +16,7 @@ export default {
             Home
           </div>
         </router-link>
-        <router-link to="/sideBarClient/technical" active-class="active" exact tag="button" class="side-btn">
+        <router-link to="/sideBarClient/technicalView" active-class="active" exact tag="button" class="side-btn">
           <div class="link-container">
             <i class="pi pi-user"></i>
             Technical

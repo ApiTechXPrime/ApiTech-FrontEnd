@@ -72,7 +72,7 @@ export default {
 
   methods: {
     sendRequest() {
-      this.$router.push({ name: 'requests' });
+      this.$router.push({ path: '/sideBarClient/requests/'+this.selectedTechnical.id });
     },
 
   },

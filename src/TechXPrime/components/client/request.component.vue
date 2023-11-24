@@ -2,7 +2,7 @@
   <div class="card">
     <pv-card>
       <template #content>
-        <div class="flex justify-content-between">
+        <div class="flex justify-content-center">
           <div class="flex flex-column gap-2 w-5">
 
             <label for="name">Full name</label>
@@ -57,25 +57,25 @@ export default {
   name:"request",
   data() {
     return {
-        requestService: null,
-        name: '',
-        numberphone: '',
-        newResquest:{},
-        day: '',
-        hour: '',
-        cellphone: '',
-        problem: '',
-        specification: '',
-       showErrorName: false,
-       showErrorNumberPhone: false,
+      requestService: null,
+      technicalId: 0,
+      name: '',
+      numberphone: '',
+      newResquest:{},
+      day: '',
+      hour: '',
+      cellphone: '',
+      problem: '',
+      specification: '',
+      showErrorName: false,
+      showErrorNumberPhone: false,
       showErrorHour: false,
-        showErrorDay: false,
-        showErrorcellphone: false,
-        showErrorproblem: false,
-       showErrorspecification: false,
-       requestCreated: false,
+      showErrorDay: false,
+      showErrorcellphone: false,
+      showErrorproblem: false,
+      showErrorspecification: false,
+      requestCreated: false,
       contentVerified:false,
-
     };
   },
   methods: {
@@ -91,6 +91,7 @@ export default {
 
             {
              "id": 0,
+              "technicalId": this.technicalId,
              "name": this.name,
              "numberphone": this.numberphone,
              "day": this.day,
@@ -101,7 +102,6 @@ export default {
           };
 
         if (this.requestService) {
-
           this.requestService.createRequest(this.newResquest)
               .then(() => {
                 this.requestCreated = true;
@@ -111,9 +111,7 @@ export default {
                 console.error('Error creating request:', error);
               });
         }
-
       }
-      this.goToLogin()
 
     },
     verifyContent(){
@@ -131,17 +129,18 @@ export default {
     },
 
     goToLogin(){
-      if(this.userCreated)
+      if(this.requestCreated)
       {
-        this.$router.push('/login')
+        console.log("Entrando a login")
+        this.$router.push('/sideBarClient/homeClient')
       }
     }
 
 
   },
   created(){
-
     this.requestService = new RequestApiService();
+    this.technicalId = this.$route.params.technicalId;
   },
 
 };

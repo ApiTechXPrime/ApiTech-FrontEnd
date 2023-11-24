@@ -51,7 +51,7 @@ export default{
 
           </div>
           <div class="button-container">
-            <router-link :to="{ name: 'Send', params: { id: imbox.id } }" active-class="active" exact tag="button" class="button side-btn">ACCEPT</router-link>
+            <router-link :to="{ path:'/sideBarTechnical/send/'+imbox.id }" active-class="active" exact tag="button" class="button side-btn">ACCEPT</router-link>
             <!-- <button class="button">ACCEPT</button> -->
             <button class="button">DENY</button>
           </div>
