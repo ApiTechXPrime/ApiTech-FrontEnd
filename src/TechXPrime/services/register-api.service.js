@@ -11,6 +11,6 @@ export class RegisterApiService{
         return http.post('/clients', data);
     }
     createTechnical(data){
-        return http.post('/technical', data);
+        return http.post('/technicals', data);
     }
 }

@@ -1,5 +1,5 @@
 <script setup>
-import inbox from "/src/TechXPrime/components/inbox.component.vue"
+import inbox from "/src/TechXPrime/components/technicals/inbox.component.vue"
 </script>
 
 <template>
@@ -14,6 +14,6 @@ import inbox from "/src/TechXPrime/components/inbox.component.vue"
   align-items: center
 }
 .Inbox i {
-  margin-right: 10px; /* Ajusta el margen entre el icono y el texto */
+  margin-right: 10px;
 }
 </style>
