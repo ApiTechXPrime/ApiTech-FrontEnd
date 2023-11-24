@@ -85,12 +85,6 @@ const router = createRouter({
                   components:{
                       inside:()=>import(/* webpackChunkName: "progress"*/ '@/TechXPrime/components/technicals/task-list.component.vue')}
               },
-              {
-                  path:'send/:id',
-                  name: 'Send',
-                  components:{
-                      inside:()=>import(/* webpackChunkName: "progress"*/ '@/public/views/Send.vue')}
-              }
 
           ]
       },
