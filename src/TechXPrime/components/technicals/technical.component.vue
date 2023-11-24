@@ -228,7 +228,7 @@ export default {
   },
   created() {
     this.technicalService = new TechnicalApiService();
-    this.technicalService.getById()
+    this.technicalService.getTechnicals()
         .then((response) => {
           this.technicals = response.data;
           this.selectRandomTechnical();

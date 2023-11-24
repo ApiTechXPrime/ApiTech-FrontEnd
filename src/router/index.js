@@ -22,7 +22,7 @@ const router = createRouter({
           children:[
               {
                   path:'/home',
-                  component:()=>import(/* webpackChunkName: "overview"*/ '../public/views/Overview.vue')
+                  component:()=>import(/* webpackChunkName: "overview"*/ '../TechXPrime/components/home.component.vue')
               },
               {
                   path:'/profile',
@@ -47,6 +47,7 @@ const router = createRouter({
               }
               ]
       },
+
       {
           path: '/',
           redirect: 'login'

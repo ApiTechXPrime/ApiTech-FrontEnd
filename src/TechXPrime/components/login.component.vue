@@ -17,6 +17,7 @@ export default{
       contentVerified: false,
       existUser: false,
       loginService:null,
+      selectedUser: {},
     };
   },
   methods:{
@@ -39,10 +40,16 @@ export default{
           if(client.email === this.email && client.password === this.password){
             this.existUser = true;
           }
+          if(this.existUser){
+            this.selectedUser= client;
+          }
         }
         for (let technical of this.users.technicals){
           if(technical.email === this.email && technical.password === this.password){
             this.existUser = true;
+          }
+          if(this.existUser){
+            this.selectedUser= technical;
           }
         }
         this.showErrorUser = this.existUser === false;
