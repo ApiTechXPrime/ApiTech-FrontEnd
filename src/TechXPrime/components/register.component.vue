@@ -39,7 +39,7 @@ export default {
               {
                 "id": 0,
                 "fullName": this.fullName,
-                "email": this.password,
+                "email": this.email,
                 "password": this.password,
                 "birthday": this.birthday,
                 "experience": "",
@@ -56,7 +56,7 @@ export default {
               {
                 "id": 0,
                 "fullName": this.fullName,
-                "email": this.password,
+                "email": this.email,
                 "password": this.password,
                 "birthday": this.birthday
               }

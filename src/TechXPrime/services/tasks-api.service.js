@@ -3,22 +3,22 @@ import http from '../../shared/services/http-common';
 export class TasksApiService{
 
     getAll() {
-        return http.get('/tasks');
+        return http.get('/orders');
     }
     getById(id) {
-        return http.get(`/tasks/${id}`);
+        return http.get(`/orders/${id}`);
     }
     create(data) {
-        return http.post('/tasks', data);
+        return http.post('/orders', data);
     }
     update(id, data) {
-        return http.put(`/tasks/${id}`, data);
+        return http.put(`/orders/${id}`, data);
     }
     delete(id) {
-        return http.delete(`/tasks/${id}`);
+        return http.delete(`/orders/${id}`);
     }
     findByName(name) {
-        return http.get(`/tasks?name=${name}`);
+        return http.get(`/orders?name=${name}`);
     }
 
 }

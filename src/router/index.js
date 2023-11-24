@@ -30,7 +30,7 @@ const router = createRouter({
               },
               {
                   path:'/dashboard',
-                  component:()=>import(/* webpackChunkName: "favorite"*/ '@/TechXPrime/components/dashboard.component.vue')
+                  component:()=>import(/* webpackChunkName: "favorite"*/ '@/TechXPrime/components/technicals/dashboard.component.vue')
               },
               {
                   path:'/inbox',
@@ -49,7 +49,7 @@ const router = createRouter({
       },
       {
           path: '/',
-          redirect: 'home'
+          redirect: 'login'
       }
       ]
 

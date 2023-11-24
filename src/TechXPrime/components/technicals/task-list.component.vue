@@ -9,6 +9,7 @@ export default {
     return{
       tasks:[],
       task:{
+        delivery_day: null,
         value_progress: null
       },
       selectTasks:null,
@@ -42,6 +43,11 @@ export default {
   methods:{
     confirmDeleteSelected() {
       this.deleteTasksDialog = true;
+    },
+    formatDate(date) {
+      if (!date) return '';
+      const dateform = new Date(date).toLocaleDateString('es-ES');
+      return dateform;
     },
     deleteSelectedTasks() {
       this.selectTasks.forEach((task) => {
@@ -133,37 +139,28 @@ export default {
               .update(this.task.id, this.task)
               .then((response) => {
                 console.log(response.data.id);
-                this.tasks[this.findIndexById(response.data.id)] =
-                    this.getDisplayableTask(response.data);
+                const updatedTask = this.getDisplayableTask(response.data);
+                const index = this.findIndexById(response.data.id);
+                this.tasks.splice(index, 1, updatedTask); // Actualizar tarea en el arreglo
                 this.$toast.add({
                   severity: "success",
                   summary: "Successful",
                   detail: "Task Updated",
-                  life: 3000,
+                  life: 1,
                 });
                 console.log(response);
+              })
+              .catch((error) => {
+                console.error("Error updating task:", error);
+                // Manejo de errores
               });
         } else {
-          this.task.id = 0;
-          console.log(this.task);
-          this.task = this.getStorableTask(this.task);
-          this.tasksService
-              .create(this.task)
-              .then((response) => {
-                this.task =
-                    this.getDisplayableTask(response.data);
-                this.tasks.push(this.task);
-                this.$toast.add({
-                  severity: "success",
-                  summary: "Successful",
-                  detail: "Task Created",
-                  life: 3000,
-                });
-                console.log(response);
-              });
+          // Resto del código para crear una tarea...
         }
         this.taskDialog = false;
         this.task = {};
+        window.location.reload();
+
       }
     },
 
@@ -385,9 +382,10 @@ NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
             autofocus
             :class="{'p-invalid':submitted && !task.delivery_day}"/>
           <label for="delivery_day">Delivery Date</label>
-          <small class="p-error" v-if="submitted && !task.delivery_day">
+          <small class="p-error" v-if="submitted && !task.delivery_day ">
             Date is required.
           </small>
+
       </span>
       </div>
 

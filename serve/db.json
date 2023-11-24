@@ -1,0 +1,215 @@
+{
+  "technicals": [
+    {
+      "id": 1,
+      "fullName": "Javier Dominguez",
+      "email": "user1@gmail.com",
+      "password": "1111",
+      "birthday": "28/05/1995",
+      "experience": "1 - 2 years",
+      "qualification": "⭐⭐⭐⭐✩",
+      "location": "Av. Mariano LT20",
+      "aboutHim": "Responsible, Gentle",
+      "image": "https://us.123rf.com/450wm/nickshot/nickshot1505/nickshot150500023/50709326-retrato-del-hombre-joven-del-estudiante-con-los-ojos-asustadizos-ojos-rápidos-aislados-en-fondo.jpg?ver=6",
+      "consultationPrice": "S/ 15.00",
+      "Number": "8954976326"
+    },
+    {
+      "id": 2,
+      "fullName": "Lucas Hernandez",
+      "email": "user2@gmail.com",
+      "password": "2222",
+      "birthday": "28/05/1995",
+      "experience": "1 - 6 months",
+      "qualification": "⭐⭐✩✩✩",
+      "location": "Calle Herrera LT21",
+      "aboutHim": "Calm, Gentle",
+      "image": "https://images.unsplash.com/photo-1618816566992-b5e08d3c02f9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNhcmElMjBkZSUyMjMlMjBjZXJjYXxlbnwwfHx8fHww&w=1000&q=80",
+      "consultationPrice": "S/ 12.00",
+      "Number": ""
+    },
+    {
+      "id": 3,
+      "fullName": "Mauricio Salas",
+      "email": "user3@gmail.com",
+      "password": "3333",
+      "birthday": "28/05/1995",
+      "experience": "3 years",
+      "qualification": "⭐⭐⭐⭐✩",
+      "location": "Av. La Marina LT26",
+      "aboutHim": "competent, skilled, Expert",
+      "image": "https://media.istockphoto.com/id/502486230/es/foto/retrato-de-hombre.jpg?s=170667a&w=0&k=20&c=NWoy796NLrG_uY-qFQDmqkpJvQcv_54OUGVDSY05ppo=",
+      "consultationPrice": "S/ 20.00",
+      "Number": ""
+    },
+    {
+      "id": 4,
+      "fullName": "Maria Lobdosky",
+      "email": "user4@gmail.com",
+      "password": "4444",
+      "birthday": "28/05/1995",
+      "experience": "2 years",
+      "qualification": "⭐⭐⭐✩✩",
+      "location": "Calle Intisuyo LT12",
+      "aboutHim": "professional, diligent, efficient",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5q2UequnLIdY-WW6xfnn_ARI_QGw88dIeFGpO3EQ6E41LxiEQMPLJbDruZ-InC0VgolE&usqp=CAU",
+      "consultationPrice": "S/ 18.00",
+      "Number": ""
+    },
+    {
+      "id": 5,
+      "fullName": "Esmeralda Aliaga",
+      "email": "user5@gmail.com",
+      "password": "5555",
+      "birthday": "28/05/1995",
+      "experience": "1 - 2 years",
+      "qualification": "⭐⭐⭐⭐⭐",
+      "location": "Av. Primavera LT34",
+      "aboutHim": "Responsible, Reliable, witty",
+      "image": "https://us.123rf.com/450wm/julenochek/julenochek1510/julenochek151000039/46805012-retrato-de-hombre-joven-primer-plano-de-la-cara-fondo-negro.jpg?ver=6",
+      "consultationPrice": "S/ 25.00",
+      "Number": ""
+    },
+    {
+      "id": 6,
+      "fullName": "Jean Barrantes",
+      "email": "user6@gmail.com",
+      "password": "6666",
+      "birthday": "28/05/1995",
+      "experience": "1 year",
+      "qualification": "⭐⭐⭐✩✩",
+      "location": "Av. Perú LT15",
+      "aboutHim": "Methodical, organized, communicative",
+      "image": "https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
+      "consultationPrice": "S/ 14.00",
+      "Number": ""
+    },
+    {
+      "id": 7,
+      "fullName": "luis",
+      "email": "patata123",
+      "password": "patata123",
+      "birthday": "2023-11-04T05:00:00.000Z",
+      "experience": "",
+      "qualification": 0,
+      "location": "",
+      "aboutHim": ""
+    }
+  ],
+  "clients": [
+    {
+      "id": 1,
+      "fullName": "Prueba",
+      "email": "Prueba2",
+      "password": "Prueba3",
+      "birthday": "Prueba4",
+      "Cellphone": "Samsung A22",
+      "Problem": "The battery overheats every moment of the day.",
+      "Time": "10/09/2023 to 5:00 pm",
+      "Number": "8954976326"
+    },
+    {
+      "id": 2,
+      "fullName": "Another",
+      "email": "Another2",
+      "password": "Another3",
+      "birthday": "Another4",
+      "Cellphone": "",
+      "Problem": "",
+      "Time": "",
+      "Number": ""
+    }
+  ],
+  "orders": [
+    {
+      "id": 2,
+      "client_name": "luis",
+      "phone_name": "Motorola G10",
+      "problem": "Se quemo ",
+      "components_to_use": "Pantalla ",
+      "value_progress": 0,
+      "delivery_day": "25/10/2003",
+      "income": 20,
+      "investment": 20,
+      "finished": false
+    },
+    {
+      "technicalId:": 1,
+      "id": 3,
+      "client_name": "Luis Eduardo",
+      "phone_name": "Samsung G50",
+      "problem": "Se quemo la pantalla",
+      "components_to_use": "Pantalla Bateria",
+      "value_progress": 0,
+      "delivery_day": "25/10/2003",
+      "income": 20,
+      "finished": false,
+      "investment": 20
+    },
+    {
+      "id": 4,
+      "client_name": "Luis Eduardo",
+      "phone_name": "Motorola G50",
+      "problem": "Se quemo la pantalla",
+      "components_to_use": "Pantalla Bateria",
+      "value_progress": 50,
+      "delivery_day": "2023-11-30T05:00:00.000Z",
+      "income": 20,
+      "investment": 20,
+      "finished": false
+    },
+    {
+      "id": 5,
+      "client_name": "Luis",
+      "phone_name": "das",
+      "problem": "jol",
+      "components_to_use": "Bateria",
+      "value_progress": 10,
+      "delivery_day": "2023-11-01T05:00:00.000Z",
+      "investment": 15,
+      "finished": false
+    }
+  ],
+  "analytics": [
+    {
+      "technicalId": 1,
+      "id": 1,
+      "week": 1,
+      "month": 10,
+      "year": 2023,
+      "incomes": 748,
+      "expenses": 373,
+      "profit": 375
+    },
+    {
+      "technicalId": 1,
+      "id": 2,
+      "week": 2,
+      "month": 10,
+      "year": 2023,
+      "incomes": 721,
+      "expenses": 268,
+      "profit": 453
+    },
+    {
+      "technicalId": 1,
+      "id": 3,
+      "week": 3,
+      "month": 10,
+      "year": 2023,
+      "incomes": 631,
+      "expenses": 395,
+      "profit": 236
+    },
+    {
+      "technicalId": 1,
+      "id": 4,
+      "week": 4,
+      "month": 10,
+      "year": 2023,
+      "incomes": 623,
+      "expenses": 288,
+      "profit": 335
+    }
+  ]
+}
