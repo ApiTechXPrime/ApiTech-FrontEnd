@@ -73,7 +73,7 @@ const router = createRouter({
               {
                   path:'progress',
                   components:{
-                      inside: ()=>import(/* webpackChunkName: "favorite"*/ '@/TechXPrime/components/technicals/dashboard.component.vue')}
+                      inside: ()=>import(/* webpackChunkName: "favorite"*/ '@/TechXPrime/components/client/view-order.component.vue')}
               },
               {
                   path:'favorite',
