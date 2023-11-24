@@ -102,6 +102,8 @@ export default {
       };
     },
     getStorableTask(getDisplayableTask) {
+      let delivery_day = new Date(getDisplayableTask.delivery_day);
+      let formattedDate = delivery_day.getDate() + '/' + (delivery_day.getMonth() + 1) + '/' + delivery_day.getFullYear();
       return {
         id: getDisplayableTask.id,
         client_name: getDisplayableTask.client_name,
@@ -109,7 +111,7 @@ export default {
         problem: getDisplayableTask.problem,
         components_to_use: getDisplayableTask.components_to_use,
         value_progress: getDisplayableTask.value_progress,
-        delivery_day: getDisplayableTask.delivery_day,
+        delivery_day: formattedDate,
         income: getDisplayableTask.income,
         investment:getDisplayableTask.investment,
         finished: getDisplayableTask.status.label === "Finished",
