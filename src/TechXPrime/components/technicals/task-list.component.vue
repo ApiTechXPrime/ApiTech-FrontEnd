@@ -44,11 +44,6 @@ export default {
     confirmDeleteSelected() {
       this.deleteTasksDialog = true;
     },
-    formatDate(date) {
-      if (!date) return '';
-      const dateform = new Date(date).toLocaleDateString('es-ES');
-      return dateform;
-    },
     deleteSelectedTasks() {
       this.selectTasks.forEach((task) => {
         this.tasksService.delete(task.id)

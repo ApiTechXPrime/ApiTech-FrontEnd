@@ -50,6 +50,11 @@ const router = createRouter({
       {
           path: '/',
           redirect: 'login'
+      },
+      {
+          path:'/requests',
+          name:'requests',
+          component:()=>import('../public/views/Request.vue')
       }
       ]
 
