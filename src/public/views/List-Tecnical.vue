@@ -14,6 +14,6 @@ import technicians from "/src/TechXPrime/components/client/list-technical.compon
   align-items: center
 }
 .request i {
-  margin-right: 10px; /* Ajusta el margen entre el icono y el texto */
+  margin-right: 10px;
 }
 </style>

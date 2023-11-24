@@ -85,7 +85,12 @@ const router = createRouter({
                   components:{
                       inside:()=>import(/* webpackChunkName: "progress"*/ '@/TechXPrime/components/technicals/task-list.component.vue')}
               },
-
+              {
+                  path:'technicalView',
+                  name: 'technicalView',
+                  components:{
+                      inside:()=>import('@/TechXPrime/components/client/view-technical.component.vue')}
+              },
           ]
       },
       {

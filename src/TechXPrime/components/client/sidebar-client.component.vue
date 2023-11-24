@@ -28,13 +28,26 @@ export default {
             Progress
           </div>
         </router-link>
-        <router-link to="/sideBarClient/favorite" active-class="active" exact tag="button" class="side-btn">
+        <router-link
+            :to="{ path: '/sideBarClient/favorite' }"
+            exact
+            tag="button"
+            class="side-btn favorite-link disabled-link"
+            aria-disabled="true"
+            :style="{ color: 'gray', cursor: 'default', pointerEvents: 'none' }"
+        >
           <div class="link-container">
             <i class="pi pi-star"></i>
             Favorite
           </div>
         </router-link>
-        <router-link to="/sideBarClient/inbox" active-class="active" exact tag="button" class="side-btn">
+        <router-link
+            :to="{ path: '/sideBarClient/inbox' }"
+            exact
+            tag="button"
+            class="side-btn"
+            :style="{ color: 'gray', cursor: 'default', pointerEvents: 'none' }"
+        >
           <div class="link-container">
             <i class="pi pi-envelope"></i>
             Inbox
