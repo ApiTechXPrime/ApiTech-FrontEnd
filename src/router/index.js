@@ -90,8 +90,13 @@ const router = createRouter({
                   name: 'Send',
                   components:{
                       inside:()=>import(/* webpackChunkName: "progress"*/ '@/public/views/Send.vue')}
-              }
-
+              },
+              {
+                  path:'technicalView',
+                  name: 'technicalView',
+                  components:{
+                      inside:()=>import('@/TechXPrime/components/client/view-technical.component.vue')}
+              },
           ]
       },
       {
