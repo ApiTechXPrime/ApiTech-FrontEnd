@@ -131,8 +131,7 @@ export default {
     goToLogin(){
       if(this.requestCreated)
       {
-        console.log("Entrando a login")
-        this.$router.push('/sideBarClient/homeClient')
+        this.$router.push(`/sideBarClient/${this.$route.params.clientId}/homeClient`)
       }
     }
 
