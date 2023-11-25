@@ -1,5 +1,5 @@
 <script>
-import {InboxApiService} from "@/TechXPrime/services/inbox-api.service";
+import {RequestApiService} from "@/TechXPrime/services/request-api.service";
 
 export default{
   name:'imbox',
@@ -12,10 +12,12 @@ export default{
   methods:{
   },
   created(){
-    this.imboxService = new InboxApiService()
-    this.imboxService.getClients()
-        .then((response) => this.imboxs = response.data)
-    console.log(this.imboxs)
+    this.imboxService = new RequestApiService()
+    this.imboxService.getRequestByTechId(this.$route.params.technicalId)
+        .then((response) => {
+          this.imboxs = response.data
+          console.log(this.imboxs)
+        })
   }
 }
 </script>
@@ -28,30 +30,30 @@ export default{
           <div class="info">
             <div class="info-item">
               <span class="info-label">Name:</span>
-              <span class="info-value">{{ imbox.fullName }}</span>
+              <span class="info-value">{{ imbox.name }}</span>
             </div>
             <div class="info-item">
               <span class="info-label">Number:</span>
-              <span class="info-value">{{ imbox.Number }}</span>
+              <span class="info-value">{{ imbox.numberPhone }}</span>
             </div>
             <div class="info-item">
               <span class="info-label">Cellphone:</span>
-              <span class="info-value">{{ imbox.Cellphone }}</span>
+              <span class="info-value">{{ imbox.cellPhone }}</span>
 
             </div>
             <div class="info-item">
               <span class="info-label">Problem:</span>
-              <span class="info-value">{{ imbox.Problem }}</span>
+              <span class="info-value">{{ imbox.problem }}</span>
 
             </div>
             <div class="info-item">
               <span class="info-label">Time:</span>
-              <span class="info-value">{{ imbox.Time }}</span>
+              <span class="info-value"> Día {{ imbox.day }} Hora: {{imbox.hour}}</span>
             </div>
 
           </div>
           <div class="button-container">
-            <router-link :to="{ path:'/sideBarTechnical/send/'+imbox.id }" active-class="active" exact tag="button" class="button side-btn">ACCEPT</router-link>
+            <router-link :to="{ path:`/sideBarTechnical/${this.$route.params.technicalId}/send/${imbox.id}`}" active-class="active" exact tag="button" class="button side-btn">ACCEPT</router-link>
             <!-- <button class="button">ACCEPT</button> -->
             <button class="button">DENY</button>
           </div>

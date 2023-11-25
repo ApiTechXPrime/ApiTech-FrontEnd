@@ -1,5 +1,14 @@
 <script>
 export default {
+  name:'SideBarTechnical',
+  data(){
+    return{
+      technicalId:{},
+    }
+  },
+  created(){
+    this.technicalId = this.$route.params.technicalId;
+  }
 }
 </script>
 
@@ -10,31 +19,31 @@ export default {
         Menu
       </div>
       <div class="menu-items">
-        <router-link to="/sideBarTechnical/homeTechnical" active-class="active" exact tag="button" class="side-btn">
+        <router-link :to="{path: `/sideBarTechnical/${this.technicalId}/homeTechnical`}" active-class="active" exact tag="button" class="side-btn">
           <div class="link-container">
             <i class="pi pi-home"></i>
             Home
           </div>
         </router-link>
-        <router-link to="/sideBarTechnical/profile" active-class="active" exact tag="button" class="side-btn">
+        <router-link :to="{path: `/sideBarTechnical/${this.technicalId}/profile`}" active-class="active" exact tag="button" class="side-btn">
           <div class="link-container">
             <i class="pi pi-user"></i>
             Profile
           </div>
         </router-link>
-        <router-link to="/sideBarTechnical/tasks" active-class="active" exact tag="button" class="side-btn">
+        <router-link :to="{path: `/sideBarTechnical/${this.technicalId}/tasks`}" active-class="active" exact tag="button" class="side-btn">
           <div class="link-container">
             <i class="pi pi-calculator"></i>
             Task
           </div>
         </router-link>
-        <router-link to="/sideBarTechnical/dashboard" active-class="active" exact tag="button" class="side-btn">
+        <router-link :to="{path: `/sideBarTechnical/${this.technicalId}/dashboard`}" active-class="active" exact tag="button" class="side-btn">
           <div class="link-container">
             <i class="pi pi-table"></i>
             Dashboard
           </div>
         </router-link>
-        <router-link to="/sideBarTechnical/inbox" active-class="active" exact tag="button" class="side-btn">
+        <router-link :to="{path: `/sideBarTechnical/${this.technicalId}/inbox`}" active-class="active" exact tag="button" class="side-btn">
           <div class="link-container">
             <i class="pi pi-envelope"></i>
             Petition

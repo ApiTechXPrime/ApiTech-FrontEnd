@@ -18,7 +18,7 @@ const router = createRouter({
               default: () => import('@/TechXPrime/components/login.component.vue')}
       },
       {
-          path: '/sideBarTechnical',
+          path: '/sideBarTechnical/:technicalId',
           name: 'homeTechnical',
           component: SidebarTechnical,
           children:[
@@ -56,7 +56,7 @@ const router = createRouter({
          ]
       },
       {
-          path: '/sideBarClient',
+          path: '/sideBarClient/:clientId',
           name: 'homeClient',
           component: SidebarClient,
           children:[

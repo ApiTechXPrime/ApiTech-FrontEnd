@@ -10,8 +10,8 @@ export default {
     return{
       tasks:[],
       task:{
-        delivery_day: null,
-        value_progress: null
+        deliveryDay: null,
+        valueProgress: null
       },
       selectTasks:null,
       tasksService: null,
@@ -45,10 +45,10 @@ export default {
 
     updateProgressBar() {
 
-      this.task.value_progress = Math.min(100, Math.max(0, this.task.value_progress));
+      this.task.valueProgress = Math.min(100, Math.max(0, this.task.valueProgress));
 
 
-      this.$refs.progressBar.value = this.task.value_progress;
+      this.$refs.progressBar.value = this.task.valueProgress;
     },
 
     getDisplayableTask(task) {
@@ -64,15 +64,15 @@ export default {
     getStorableTask(getDisplayableTask) {
       return {
         id: getDisplayableTask.id,
-        client_name: getDisplayableTask.client_name,
-        phone_name: getDisplayableTask.phone_name,
+        clientName: getDisplayableTask.clientName,
+        phoneName: getDisplayableTask.phoneName,
         problem: getDisplayableTask.problem,
-        components_to_use: getDisplayableTask.components_to_use,
-        value_progress: getDisplayableTask.value_progress,
-        delivery_day: getDisplayableTask.delivery_day,
+        componentsToUse: getDisplayableTask.componentsToUse,
+        valueProgress: getDisplayableTask.valueProgress,
+        deliveryDay: getDisplayableTask.deliveryDay,
         income: getDisplayableTask.income,
         investment:getDisplayableTask.investment,
-        finished: getDisplayableTask.status.label === "Finished",
+        finished: getDisplayableTask.status.label === "Finished"?1:0,
       };
     },
 
@@ -124,19 +124,19 @@ NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
             style="min-width: 12rem"
         ></pv-column>
         <pv-column
-            field="client_name"
+            field="clientName"
             header="Name"
             :sortable="true"
             style="min-width: 16rem"
         ></pv-column>
         <pv-column
-            field="phone_name"
+            field="phoneName"
             header="Phone"
             :sortable="true"
             style="min-width: 16rem"
         ></pv-column>
         <pv-column
-            field="delivery_day"
+            field="deliveryDay"
             header="Date"
             :sortable="true"
             style="min-width: 12rem"
@@ -156,13 +156,13 @@ NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
               }}</pv-tag>
           </template>
         </pv-column>
-        <pv-column field="value_progress"
+        <pv-column field="valueProgress"
                    header="Progress"
                    :sortable="true"
                    style="min-width: 12rem">
           <div v-for="task in tasks" :key="task.id">
             <div class="field">
-              <pv-progressbar :value="task.value_progress"></pv-progressbar>
+              <pv-progressbar :value="task.valueProgress"></pv-progressbar>
             </div>
           </div>
         </pv-column>

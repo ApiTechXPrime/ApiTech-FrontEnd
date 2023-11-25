@@ -30,41 +30,54 @@ export default {
   methods:{
     register(){
       this.verifyContent()
-      this.verifyExistingEmail()
-      if(this.contentVerified && !this.existingEmail)
-      {
-        if(this.selectedRole === 'Technical')
+      this.verifyExistingEmail().then(() => {
+        if(this.contentVerified && !this.existingEmail)
         {
-          this.newUser =
-              {
-                "id": 0,
-                "fullName": this.fullName,
-                "email": this.email,
-                "password": this.password,
-                "birthday": this.birthday,
-                "experience": "",
-                "qualification": 0,
-                "location": "",
-                "aboutHim": ""
-              }
-          this.registerService.createTechnical(this.newUser)
-          this.userCreated = true
+          this.birthday = new Date(this.birthday)
+          let formattedBirthday = this.birthday.getDate() + '/' + (this.birthday.getMonth() + 1) + '/' + this.birthday.getFullYear();
+          if(this.selectedRole === 'Technical')
+          {
+            this.newUser =
+                {
+                  "id": 0,
+                  "fullName": this.fullName,
+                  "email": this.email,
+                  "password": this.password,
+                  "birthday": formattedBirthday,
+                  "experience": "",
+                  "qualification": "✩✩✩✩✩",
+                  "location": "",
+                  "aboutHim": "",
+                  "image": "",
+                  "consultationPrice": "",
+                  "number": 0
+                }
+            this.registerService.createTechnical(this.newUser)
+            this.userCreated = true
+          }
+          else
+          {
+            this.newUser =
+                {
+                  "id": 0,
+                  "fullName": this.fullName,
+                  "email": this.email,
+                  "password": this.password,
+                  "birthday": formattedBirthday,
+                  "cellphone": "",
+                  "problem": "",
+                  "time": "",
+                  "number": 0
+                }
+            this.registerService.createClient(this.newUser)
+            this.userCreated = true
+          }
         }
-        else
-        {
-          this.newUser =
-              {
-                "id": 0,
-                "fullName": this.fullName,
-                "email": this.email,
-                "password": this.password,
-                "birthday": this.birthday
-              }
-          this.registerService.createClient(this.newUser)
-          this.userCreated = true
-        }
-      }
-      this.goToLogin()
+        this.goToLogin()
+      }).catch(error => {
+        console.error(error);
+      })
+
     },
     verifyContent(){
       this.showErrorFullName = this.fullName === '';
@@ -77,20 +90,25 @@ export default {
           || this.showErrorBirthday || this.showErrorPassword || this.showErrorConfirmPassword
           || this.showErrorSelectedRole)
     },
-    verifyExistingEmail(){
-      Promise.all([
-        this.registerService.getClientByEmail(this.email),
-        this.registerService.getTechnicalByEmail(this.email)
-      ]).then((responses) => {
-        this.userClient = responses[0].data;
-        this.userTechnical = responses[1].data;
-        if (Object.keys(this.userClient).length === 0 && Object.keys(this.userTechnical).length === 0) {
-          this.existingEmail = false;
-        }
-      })
-      if(this.existingEmail && this.contentVerified){
-        this.showErrorExistingEmail = true
-      }
+    verifyExistingEmail() {
+      return new Promise((resolve, reject) => {
+        Promise.all([
+          this.registerService.getClientByEmail(this.email),
+          this.registerService.getTechnicalByEmail(this.email)
+        ]).then((responses) => {
+          this.userClient = responses[0].data;
+          this.userTechnical = responses[1].data;
+          if (this.userClient === "" && this.userTechnical === "") {
+            this.existingEmail = false;
+          }
+          if(this.existingEmail && this.contentVerified){
+            this.showErrorExistingEmail = true
+          }
+          resolve();
+        }).catch(error => {
+          reject(error);
+        });
+      });
     },
     goToLogin(){
       if(this.userCreated)

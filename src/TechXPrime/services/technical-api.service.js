@@ -1,4 +1,5 @@
 import http from "@/shared/services/http-common";
+import axios from "axios";
 
 export class TechnicalApiService{
     getTechnicals(){
@@ -6,5 +7,10 @@ export class TechnicalApiService{
     }
     getById(id) {
         return http.get(`/technicals/${id}`);
+    }
+
+    updateTechnical(technicalData) {
+        const technicalId = technicalData.id;
+        return http.put(`/technicals/${technicalId}`, technicalData)
     }
 }

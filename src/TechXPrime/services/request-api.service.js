@@ -5,6 +5,10 @@ export class RequestApiService{
     }
     getRequestByTechId(id)
     {
-        return http.get(`/requests/${id}`);
+        return http.get(`/technicalId/${id}/requests`);
+    }
+
+    getById(id){
+        return http.get(`/requests/${id}`)
     }
 }

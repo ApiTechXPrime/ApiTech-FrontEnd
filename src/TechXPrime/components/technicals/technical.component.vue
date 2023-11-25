@@ -125,7 +125,6 @@
 import {TechnicalApiService} from "@/TechXPrime/services/technical-api.service";
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:3000';
 export default {
   name: 'technical',
   data() {
@@ -136,7 +135,7 @@ export default {
       isEditing: false,
       editedTechnical: {
         fullName: "",
-        consultationPrice: 0,
+        consultationPrice: "0",
         experience: "",
         location: "",
         aboutHim: "",
@@ -167,29 +166,20 @@ export default {
         this.editedTechnical.image = URL.createObjectURL(selectedFile);
       }
     },
-
     cancelEditing() {
       this.isEditing = false;
     },
-    updateTechnical(technicalData) {
-      const technicalId = technicalData.id;
-
-      return axios.put(`${API_BASE_URL}/technicals/${technicalId}`, technicalData)
-          .then(response => {
-            return response.data;
-          })
-          .catch(error => {
-            throw error;
-          });
-    },
     saveChanges() {
+      this.editedTechnical.consultationPrice = "S/ " + this.editedTechnical.consultationPrice.toString();
       this.technicalService.updateTechnical(this.editedTechnical)
           .then(() => {
             this.selectedTechnical = { ...this.editedTechnical };
+            console.log(this.editedTechnical);
             this.isEditing = false;
           })
           .catch((error) => {
             console.error("Error al guardar los cambios:", error);
+            console.log(this.editedTechnical);
           });
     },
 
@@ -229,11 +219,11 @@ export default {
   },
   created() {
     this.technicalService = new TechnicalApiService();
-    this.technicalService.getTechnicals()
+    this.technicalService.getById(this.$route.params.technicalId)
         .then((response) => {
-          this.technicals = response.data;
-          this.selectRandomTechnical();
-        });
+          this.selectedTechnical = response.data;
+          console.log(this.selectedTechnical);
+        })
   },
 };
 </script>

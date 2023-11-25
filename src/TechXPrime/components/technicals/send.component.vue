@@ -1,5 +1,6 @@
 <script>
 import{InboxApiService} from "@/TechXPrime/services/inbox-api.service";
+import {RequestApiService} from "@/TechXPrime/services/request-api.service";
 
 export default{
   name:'imbox',
@@ -12,10 +13,10 @@ export default{
   methods:{
   },
   created() {
-    this.imboxService = new InboxApiService();
+    this.imboxService = new RequestApiService();
     const id = this.$route.params.id;
 
-    this.imboxService.getClientById(id)
+    this.imboxService.getById(id)
         .then((response) => {
           this.imbox = response.data;
           console.log(this.imbox);
@@ -35,7 +36,7 @@ export default{
   </div>
 
   <div class="card">
-    <span v-for="client in imbox" style="text-align: right;">RESPONDING TO  {{ client ? client.fullName : '' }}</span>
+    <span style="text-align: right;">RESPONDING TO  {{ this.imbox ? this.imbox.name : '' }}</span>
     <pv-card style="margin: 10px; background-color: #007bff; ">
       <template #content>
         <div class="flex gap-2">

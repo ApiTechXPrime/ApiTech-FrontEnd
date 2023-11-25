@@ -10,7 +10,7 @@ export default {
       tasks:[],
       task:{
         delivery_day: null,
-        value_progress: null
+        valueProgress: null
       },
       selectTasks:null,
       tasksService: null,
@@ -85,10 +85,10 @@ export default {
 
     updateProgressBar() {
 
-      this.task.value_progress = Math.min(100, Math.max(0, this.task.value_progress));
+      this.task.valueProgress = Math.min(100, Math.max(0, this.task.valueProgress));
 
 
-      this.$refs.progressBar.value = this.task.value_progress;
+      this.$refs.progressBar.value = this.task.valueProgress;
     },
 
     getDisplayableTask(task) {
@@ -106,15 +106,16 @@ export default {
       let formattedDate = delivery_day.getDate() + '/' + (delivery_day.getMonth() + 1) + '/' + delivery_day.getFullYear();
       return {
         id: getDisplayableTask.id,
-        client_name: getDisplayableTask.client_name,
-        phone_name: getDisplayableTask.phone_name,
+        technicalId: this.$route.params.technicalId,
+        clientName: getDisplayableTask.clientName,
+        phoneName: getDisplayableTask.phoneName,
         problem: getDisplayableTask.problem,
-        components_to_use: getDisplayableTask.components_to_use,
-        value_progress: getDisplayableTask.value_progress,
-        delivery_day: formattedDate,
+        componentsToUse: getDisplayableTask.componentsToUse,
+        valueProgress: getDisplayableTask.valueProgress,
+        deliveryDay: formattedDate,
         income: getDisplayableTask.income,
         investment:getDisplayableTask.investment,
-        finished: getDisplayableTask.status.label === "Finished",
+        finished: getDisplayableTask.status.label === "Finished" ? 1:0,
       };
     },
     openNew() {
@@ -128,9 +129,8 @@ export default {
     },
     saveTask() {
       this.submitted = true;
-      if (this.task.client_name.trim()) {
+      if (this.task.clientName.trim()) {
         if (this.task.id) {
-          console.log(this.task);
           this.task = this.getStorableTask(this.task);
           this.tasksService
               .update(this.task.id, this.task)
@@ -148,8 +148,8 @@ export default {
               });
         } else {
           this.task.id = 0;
-          console.log(this.task);
           this.task = this.getStorableTask(this.task);
+          console.log(this.task);
           this.tasksService
               .create(this.task)
               .then((response) => {
@@ -167,7 +167,6 @@ export default {
         }
         this.taskDialog = false;
         this.task = {};
-        window.location.reload();
 
       }
     },
@@ -246,25 +245,25 @@ NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
           style="min-width: 12rem"
       ></pv-column>
       <pv-column
-          field="client_name"
+          field="clientName"
           header="Name"
           :sortable="true"
           style="min-width: 16rem"
       ></pv-column>
       <pv-column
-          field="phone_name"
+          field="phoneName"
           header="Phone"
           :sortable="true"
           style="min-width: 16rem"
       ></pv-column>
       <pv-column
-          field="delivery_day"
+          field="deliveryDay"
           header="Date"
           :sortable="true"
           style="min-width: 12rem"
       ></pv-column>
         <pv-column
-        field="status"
+        field="finished"
         header="Status"
         :sortable="true"
         style="min-width: 12rem"
@@ -305,14 +304,14 @@ NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
           <span class="p-float-label">
             <pv-input-text
                type="text"
-               id="client_name"
-               v-model.trim="task.client_name"
+               id="clientName"
+               v-model.trim="task.clientName"
               required="true"
               autofocus
-              :class="{ 'p-invalid': submitted && !task.client_name }"
+              :class="{ 'p-invalid': submitted && !task.clientName }"
             />
-            <label for="client_name">Client Name</label>
-            <small class="p-error" v-if="submitted && !task.client_name">
+            <label for="clientName">Client Name</label>
+            <small class="p-error" v-if="submitted && !task.clientName">
             Client Name is required.
             </small>
           </span>
@@ -321,13 +320,13 @@ NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
         <span class="p-float-label">
           <pv-input-text
               type="text"
-              id="phone_name"
-              v-model.trim="task.phone_name"
+              id="phoneName"
+              v-model.trim="task.phoneName"
               required="true"
               autofocus
-              :class="{'p-invalid':submitted && !task.phone_name}"/>
-          <label for="phone_name">Phone's name</label>
-          <small class="p-error" v-if="submitted && !task.phone_name">Cellphone is required.</small>
+              :class="{'p-invalid':submitted && !task.phoneName}"/>
+          <label for="phoneName">Phone's name</label>
+          <small class="p-error" v-if="submitted && !task.phoneName">Cellphone is required.</small>
         </span>
       </div>
 
@@ -350,13 +349,13 @@ NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
         <span class="p-float-label">
         <pv-input-text
             type="text"
-            id="components_to_use"
-            v-model.trim="task.components_to_use"
+            id="componentsToUse"
+            v-model.trim="task.componentsToUse"
             required="true"
             autofocus
-            :class="{'p-invalid':submitted && !task.components_to_use}"/>
-        <label for="components_to_use">Components</label>
-        <small class="p-error" v-if="submitted && !task.components_to_use">Components are required.</small>
+            :class="{'p-invalid':submitted && !task.componentsToUse}"/>
+        <label for="componentsToUse">Components</label>
+        <small class="p-error" v-if="submitted && !task.componentsToUse">Components are required.</small>
         </span>
         </div>
         <div class="field">
@@ -380,7 +379,19 @@ NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
           />
         </div>
       </div>
-
+      <div class="field">
+        <span class="p-float-label">
+            <pv-input-number
+                id="money"
+                v-model="task.income"
+                required="trust"
+                autofocus
+                :class="{'p-invalid': submitted && !task.income}"
+            />
+        <label for="money">Money Income</label>
+          <small class="p-error" v-if="submitted && !task.income">Income is required.</small>
+        </span>
+      </div>
       <div  class="field">
       <span class="p-float-label">
         <pv-calendar
@@ -399,20 +410,20 @@ NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
 
       <div>
         <div class="field">
-          <pv-progressbar  ref="progressBar" :value="task.value_progress"></pv-progressbar>
+          <pv-progressbar  ref="progressBar" :value="task.valueProgress"></pv-progressbar>
         </div>
       <div class="field">
         <span class="p-float-label">
             <pv-input-number
-                id="value_progress"
-                v-model="task.value_progress"
+                id="valueProgress"
+                v-model="task.valueProgress"
                 required="trust"
                 autofocus
-                :class="{'p-invalid': submitted && !task.value_progress}"
+                :class="{'p-invalid': submitted && !task.valueProgress}"
                 @input="updateProgressBar"
             />
-        <label for="value_progress">Value Progress</label>
-          <small class="p-error" v-if="submitted && !task.value_progress">Value is required.</small>
+        <label for="valueProgress">Value Progress</label>
+          <small class="p-error" v-if="submitted && !task.valueProgress">Value is required.</small>
         </span>
       </div>
       </div>
@@ -469,7 +480,7 @@ NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
         <i class="pi pi-exclamation-triangle mr-3" style="font-size:
 2rem" />
         <span v-if="task">
-Are you sure you want to delete <b>{{ task.client_name }}</b>?
+Are you sure you want to delete <b>{{ task.clientName }}</b>?
 </span>
       </div>
       <template #footer>

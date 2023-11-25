@@ -63,10 +63,10 @@ export default{
       this.$router.push('/register');
     },
     goToHomeTechnical(){
-      this.$router.push('/sideBarTechnical/homeTechnical');
+      this.$router.push(`/sideBarTechnical/${this.selectedUser.id}/homeTechnical`);
     },
     gotToHomeClient() {
-      this.$router.push('/sideBarClient/homeClient');
+      this.$router.push(`/sideBarClient/${this.selectedUser.id}/homeClient`);
     }
   },
   created(){

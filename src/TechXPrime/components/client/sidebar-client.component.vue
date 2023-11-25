@@ -10,19 +10,19 @@ export default {
         Menu
       </div>
       <div class="menu-items">
-        <router-link to="/sideBarClient/homeClient" active-class="active" exact tag="button" class="side-btn">
+        <router-link :to="{path: `/sideBarClient/${this.$route.params.clientId}/homeClient`}" active-class="active" exact tag="button" class="side-btn">
           <div class="link-container">
             <i class="pi pi-home"></i>
             Home
           </div>
         </router-link>
-        <router-link to="/sideBarClient/technicalView" active-class="active" exact tag="button" class="side-btn">
+        <router-link :to="{path: `/sideBarClient/${this.$route.params.clientId}/technicalView`}" active-class="active" exact tag="button" class="side-btn">
           <div class="link-container">
             <i class="pi pi-user"></i>
             Technical
           </div>
         </router-link>
-        <router-link to="/sideBarClient/progress" active-class="active" exact tag="button" class="side-btn">
+        <router-link :to="{path: `/sideBarClient/${this.$route.params.clientId}/progress`}" active-class="active" exact tag="button" class="side-btn">
           <div class="link-container">
             <i class="pi pi-clock"></i>
             Progress
