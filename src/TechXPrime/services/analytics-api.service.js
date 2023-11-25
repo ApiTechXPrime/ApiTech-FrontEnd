@@ -10,7 +10,7 @@ export class AnalyticsApiService {
                 data[item.week] = {
                     incomes: item.incomes,
                     expenses: item.expenses,
-                    profit: item.profit
+                    profit: item.profits
                 };
             });
             return {
