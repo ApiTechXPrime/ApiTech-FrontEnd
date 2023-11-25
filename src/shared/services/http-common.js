@@ -1,6 +1,6 @@
 import axios from 'axios';
 
 export default axios.create({
-    baseURL: 'http://localhost:5100/api/v1',
+    baseURL: 'https://apitechxprime.zeabur.app/api/v1',
     headers: {"Content-Type": 'application/json'}
 });
