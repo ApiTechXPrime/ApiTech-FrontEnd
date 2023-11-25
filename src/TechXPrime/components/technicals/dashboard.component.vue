@@ -95,7 +95,7 @@ export default{
           let incomes = [];
           let expenses = [];
           for (let i = 1; i <= 4; i++) {
-            profits.push(response.data[i].profit);
+            profits.push(response.data[i].profits);
             incomes.push(response.data[i].incomes);
             expenses.push(response.data[i].expenses);
           }
