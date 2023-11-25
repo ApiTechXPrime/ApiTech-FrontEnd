@@ -3,7 +3,7 @@ import http from "@/shared/services/http-common";
 export class AnalyticsApiService {
     getAnalyticsByMonth(month) {
         return Promise.all([
-            http.get(`/analytics?month=${month}`)
+            http.get(`month/${month}/analytics`)
         ]).then(analyticsResponse => {
             let data = {};
             analyticsResponse[0].data.forEach(item => {
